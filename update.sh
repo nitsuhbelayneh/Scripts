@@ -19,8 +19,7 @@ sudo systemctl restart ssh
 sudo apt autoremove
 history -c
 
-# Delete the script file
-rm "$0"
+
 
 #for desktop servers to enable rdp un comment the lines below
 
@@ -28,3 +27,19 @@ rm "$0"
 # sudo apt install xorgxrdp
 # sudo apt install xrdp
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Delete the script file
+rm "$0"
