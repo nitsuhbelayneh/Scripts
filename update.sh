@@ -19,9 +19,9 @@ sudo systemctl restart ssh
 
 #for desktop servers to enable rdp un comment the lines below
 
-sudo apt install xserver-xorg-core
-sudo apt install xorgxrdp
-sudo apt install xrdp
+sudo apt install xserver-xorg-core -y
+sudo apt install xorgxrdp -y
+sudo apt install xrdp -y
 
 # Check if the lines are already present in the file /etc/gdm3/custom.conf
 if grep -q "AutomaticLoginEnable=True" /etc/gdm3/custom.conf && grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf && grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
