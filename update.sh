@@ -17,13 +17,13 @@
 # use the same formating as the below for the error that reapets the line when it is commeted and without comment, use an and operator and chek them both at the same time
 
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
-if grep -q "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && grep -q "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
+if ! grep -q "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && grep -q "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
   # Add a new line above "#PermitRootLogin prohibit-password"
-  sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-  echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config"
+  #sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
+  echo " Line 'PermitRootLogin yes' exist in /etc/ssh/sshd_config"
 else
   sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-  echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config, Line 'PermitRootLogin yes' is either not commented or does not exist in /etc/ssh/sshd_config"
+  echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config"
 fi
 
 sudo systemctl restart ssh 
