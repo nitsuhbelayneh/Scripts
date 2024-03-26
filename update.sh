@@ -91,7 +91,7 @@ sudo apt install openssh-server -y
 # Check if the line "#PermitRootLogin prohibit-password" exists in /etc/ssh/sshd_config
 if grep -q "#PermitRootLogin prohibit-password" /etc/ssh/sshd_config; then
   # Add a new line above the line
-  sed -i '/#PermitRootLogin prohibit-password/i \your_new_line_here' /etc/ssh/sshd_config
+  sed -i '/#PermitRootLogin prohibit-password/i \PermitRootLogin yes' /etc/ssh/sshd_config
   echo "Added a new line above the line '#PermitRootLogin prohibit-password' in sshd_config"
 else
   echo "Line '#PermitRootLogin prohibit-password' does not exist in sshd_config"
