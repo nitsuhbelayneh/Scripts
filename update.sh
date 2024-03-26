@@ -140,7 +140,7 @@ fi
 # this code addes the line when it does not exists but id doest add anew onw it is commented
 
 
-## Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
+# Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
 #if ! grep -qE "#\s+TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
 #  # Check if the line is commented
 #  if grep -qE "#\s+TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
@@ -156,11 +156,11 @@ fi
 
 
 # Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
-if grep -qE "#\s+TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
+if grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
   # Check if the line is commented
-  if grep -qE "#\s+TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
+  if grep -q "^#.*AllowRoot=True" /etc/gdm3/custom.conf; then
     # Uncomment the line
-    sed -i 's/^#\s*\(\(.*AllowRoot=True\)\|\(.*#.*AllowRoot=True\)\)/\1/' /etc/gdm3/custom.conf
+    sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
     echo "Line 'AllowRoot=True' uncommented in /etc/gdm3/custom.conf"
   else
     echo "Line 'AllowRoot=True' already exists in /etc/gdm3/custom.conf"
