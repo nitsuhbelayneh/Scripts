@@ -40,7 +40,7 @@ sudo apt install xrdp -y
 #fi
 
 # Comment out the line in /etc/pam.d/gdm-password
-sed -i 's/^auth required     pam_succeed_if.so user != root quiet/#&/' /etc/pam.d/gdm-password
+sed -i 's/^auth required    pam_succeed_if.so user != root quiet/#&/' /etc/pam.d/gdm-password
 
 #cho "Line commented in /etc/pam.d/gdm-password"
 
