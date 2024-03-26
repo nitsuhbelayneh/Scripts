@@ -33,20 +33,6 @@ sudo apt install xrdp -y
 
 
 
-# Check if the line "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
-if ! grep -q "^[^#].*AutomaticLogin=root" /etc/gdm3/custom.conf; then
-  # Check if the line is commented
-  if grep -q "^#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
-    # Uncomment the line
-    sed -i 's/^#\(.*AutomaticLogin=root\)/\1/' /etc/gdm3/custom.conf
-    echo "Line 'AutomaticLogin=root' uncommented in /etc/gdm3/custom.conf"
-  else
-    # Add the line at the end of the file
-    echo "AutomaticLogin=root" >> /etc/gdm3/custom.conf
-    echo "Line 'AutomaticLogin=root' added to /etc/gdm3/custom.conf"
-  fi
-fi
-
 # Check if the line "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
 if ! grep -q "^[^#].*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
   # Check if the line is commented
@@ -55,11 +41,27 @@ if ! grep -q "^[^#].*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
     sed -i 's/^#\(.*AutomaticLoginEnable=True\)/\1/' /etc/gdm3/custom.conf
     echo "Line 'AutomaticLoginEnable=True' uncommented in /etc/gdm3/custom.conf"
   else
-    # Add the line at the end of the file
-    echo "AutomaticLoginEnable=True" >> /etc/gdm3/custom.conf
+    # Add the line under [daemon]
+    sed -i '/\[daemon\]/a AutomaticLoginEnable=True' /etc/gdm3/custom.conf
     echo "Line 'AutomaticLoginEnable=True' added to /etc/gdm3/custom.conf"
   fi
 fi
+
+# Check if the line "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
+if ! grep -q "^[^#].*AutomaticLogin=root" /etc/gdm3/custom.conf; then
+  # Check if the line is commented
+  if grep -q "^#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
+    # Uncomment the line
+    sed -i 's/^#\(.*AutomaticLogin=root\)/\1/' /etc/gdm3/custom.conf
+    echo "Line 'AutomaticLogin=root' uncommented in /etc/gdm3/custom.conf"
+  else
+    # Add the line under [daemon]
+    sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
+    echo "Line 'AutomaticLogin=root' added to /etc/gdm3/custom.conf"
+  fi
+fi
+
+
 
 
 
