@@ -101,12 +101,13 @@ fi
 
 
 # Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf
-if grep -q "#\s*AllowRoot=True" /etc/gdm3/custom.conf && grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then
-  sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-  echo "Added line 'AllowRoot=True' in /etc/gdm3/custom.conf"
+if ! grep -q "#\s*AllowRoot=True" /etc/gdm3/custom.conf && grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then
+  echo "Line 'AllowRoot=True' is already exists in /etc/gdm3/custom.conf"
+  
 else
   # Add a new line above "# TimedLoginDelay = 10"
-  echo "Line 'AllowRoot=True' is already commented in /etc/gdm3/custom.conf"
+  sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+  echo "Added line 'AllowRoot=True' in /etc/gdm3/custom.conf"
   
 fi
 
@@ -138,6 +139,15 @@ history -c
 # Delete the script file
 rm "$0"
 
+
+
+#the order shod be 
+#if 
+#  chek is the wanted line is in the wanted postion?
+#  print the line alrady exists
+#else 
+#  insert the line in the expected postion
+#  print the line has been insterted
 
 
 # next write the netplan configuration script
