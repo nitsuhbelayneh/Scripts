@@ -191,23 +191,35 @@ fi
 #fi
 
 
-# Check if "AllowRoot=True" exists below in /etc/gdm3/custom.conf
-if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf && ! grep -q "^#.*AllowRoot=True" /etc/gdm3/custom.conf; then
-  # Add a new line under "# TimedLoginDelay = 10" if "AllowRoot=True" doesn't exist
-  sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-  echo "Added line 'AllowRoot=True' under '# TimedLoginDelay = 10' in custom.conf"
-elif ! grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf; then
-  # Add the line "# TimedLoginDelay = 10" and "AllowRoot=True" if neither exist
-  printf "\n# TimedLoginDelay = 10\nAllowRoot=True\n" >> /etc/gdm3/custom.conf
-  echo "Added lines '# TimedLoginDelay = 10' and 'AllowRoot=True' in custom.conf"
-else
-  echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
+## Check if "AllowRoot=True" exists below in /etc/gdm3/custom.conf
+#if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf && ! grep -q "^#.*AllowRoot=True" /etc/gdm3/custom.conf; then
+#  # Add a new line under "# TimedLoginDelay = 10" if "AllowRoot=True" doesn't exist
+#  sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+#  echo "Added line 'AllowRoot=True' under '# TimedLoginDelay = 10' in custom.conf"
+#elif ! grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf; then
+#  # Add the line "# TimedLoginDelay = 10" and "AllowRoot=True" if neither exist
+#  printf "\n# TimedLoginDelay = 10\nAllowRoot=True\n" >> /etc/gdm3/custom.conf
+#  echo "Added lines '# TimedLoginDelay = 10' and 'AllowRoot=True' in custom.conf"
+#else
+#  echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
+#fi
+
+
+
+
+# Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
+if ! grep -qE "#\s+TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
+  # Check if the line is commented
+  if grep -qE "#\s+TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
+    # Uncomment the line
+    sed -i 's/^#\s*\(\(.*AllowRoot=True\)\|\(.*#.*AllowRoot=True\)\)/\1/' /etc/gdm3/custom.conf
+    echo "Line 'AllowRoot=True' uncommented in /etc/gdm3/custom.conf"
+  else
+    # Add the line below "# TimedLoginDelay = 10"
+    sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+    echo "Line 'AllowRoot=True' added to /etc/gdm3/custom.conf"
+  fi
 fi
-
-
-
-
-
 
 
 
