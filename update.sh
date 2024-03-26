@@ -37,10 +37,12 @@ sudo systemctl restart ssh
 
 
 
+
+
 # Check if "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
-if grep -q "^\s*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
+if grep -qE "^\s*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
   # Check if the line is commented
-  if ! grep -q "^#.*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
+  if ! grep -qE "^#.*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
     # Add a new line above the commented line
     echo "Line 'AutomaticLoginEnable=True' already exists in custom.conf"
     #sed -i '/^#.*AutomaticLoginEnable=True/i AutomaticLoginEnable=True' /etc/gdm3/custom.conf
