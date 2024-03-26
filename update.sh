@@ -67,6 +67,12 @@ else
   echo "Added line 'AutomaticLogin=root' under [daemon] in custom.conf"
 fi
 
+
+
+
+#for the command below use the format for the ssh and fix the problem
+
+
 # Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
 if grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
   # Check if the line is commented
@@ -82,6 +88,13 @@ else
   sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
   echo "Line 'AllowRoot=True' added to /etc/gdm3/custom.conf"
 fi
+
+
+
+
+
+
+
 
 # Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
 if grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
