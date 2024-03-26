@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Update the package lists
-sudo apt update
+#sudo apt update
 
 # Upgrade installed packages
-sudo apt-get dist-upgrade -y
+#sudo apt-get dist-upgrade -y
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 #sudo apt install qemu-guest-agent -y
@@ -12,7 +12,7 @@ sudo apt-get dist-upgrade -y
 
 
 #install openshh-server and configure it so that root can ssh as well
-sudo apt install openssh-server -y
+#sudo apt install openssh-server -y
 
 # use the same formating as the below for the error that reapets the line when it is commeted and without comment, use an and operator and chek them both at the same time
 
@@ -30,9 +30,10 @@ sudo systemctl restart ssh
 
 #for desktop servers to enable rdp un comment the lines below
 
-sudo apt install xserver-xorg-core -y
-sudo apt install xorgxrdp -y
-sudo apt install xrdp -y
+#sudo apt install xserver-xorg-core -y
+#sudo apt install xorgxrdp -y
+#sudo apt install xrdp -y
+
 
 
 # Check if "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
@@ -119,6 +120,12 @@ else
 fi
 
 
+
+
+# Restart the rdp service after changing the configuration files
+sudo systemctl restart xrdp
+
+
 # Remove and clear
 sudo apt autoremove
 history -c
@@ -126,3 +133,7 @@ history -c
 
 # Delete the script file
 rm "$0"
+
+
+
+# next write the netplan configuration script
