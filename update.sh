@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#chane the permission to excute
+chmod +x update.sh
+
 # Update the package lists
 sudo apt update
 
