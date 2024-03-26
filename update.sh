@@ -26,23 +26,54 @@ sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
 
-# Check if the lines are already present in the file /etc/gdm3/custom.conf
-if grep -q "AutomaticLoginEnable=True" /etc/gdm3/custom.conf && grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf && grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
-  echo "Lines already exist in /etc/gdm3/custom.conf"
-else
-  # Add the lines under [daemon]
+
+
+#below this is just a test
+
+# Check if the lines already exist in /etc/gdm3/custom.conf
+if ! grep -q "AutomaticLoginEnable=True" /etc/gdm3/custom.conf || \
+   ! grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf || \
+   ! grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
+
+  # Add the lines under [daemon] if they don't already exist
   sed -i '/\[daemon\]/a AutomaticLoginEnable=True\nAutomaticLogin=root' /etc/gdm3/custom.conf
 
-  # Add the line AllowRoot=True below # TimedLoginDelay = 10
+  # Add the line AllowRoot=True below # TimedLoginDelay = 10 if it doesn't already exist
   sed -i '/#  TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
 
-  #echo "Lines added to /etc/gdm3/custom.conf"
+  echo "Lines added to /etc/gdm3/custom.conf"
 fi
+
+# Check if the line is already commented in /etc/pam.d/gdm-password
+if ! grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
+  # Comment out the line in /etc/pam.d/gdm-password if it's not already commented
+  sed -i 's/^auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet/#&/' /etc/pam.d/gdm-password
+  echo "Line commented in /etc/pam.d/gdm-password"
+fi
+
+
+
+
+
+
+
+# Check if the lines are already present in the file /etc/gdm3/custom.conf
+#if grep -q "AutomaticLoginEnable=True" /etc/gdm3/custom.conf && grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf && grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
+#  echo "Lines already exist in /etc/gdm3/custom.conf"
+#else
+  # Add the lines under [daemon]
+#  sed -i '/\[daemon\]/a AutomaticLoginEnable=True\nAutomaticLogin=root' /etc/gdm3/custom.conf
+
+  # Add the line AllowRoot=True below # TimedLoginDelay = 10
+#  sed -i '/#  TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+
+  #echo "Lines added to /etc/gdm3/custom.conf"
+#fi
 
 # Comment out the line in /etc/pam.d/gdm-password
 #sed -i 's/^auth required    pam_succeed_if.so user != root quiet/#&/' /etc/pam.d/gdm-password
 
-sed -i 's/^\s*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet/#&/' /etc/pam.d/gdm-password
+#sed -i 's/^\s*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet/#&/' /etc/pam.d/gdm-password
 
 #cho "Line commented in /etc/pam.d/gdm-password"
 
@@ -56,3 +87,5 @@ history -c
 
 # Delete the script file
 rm "$0"
+
+
