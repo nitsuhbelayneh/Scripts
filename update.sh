@@ -48,7 +48,7 @@ if ! grep -q "^[^#].*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
 fi
 
 # Check if the line "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
-if ! grep -q "#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
+if ! grep -q "^[^#].*AutomaticLogin=root" /etc/gdm3/custom.conf; then
   # Check if the line is commented
   if grep -q "^#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
     # Uncomment the line
@@ -62,9 +62,9 @@ if ! grep -q "#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
 fi
 
 # Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
-if ! grep -q "#  TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
+if ! grep -q "#  TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
   # Check if the line is commented
-  if grep -q "#  TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
+  if grep -q "#  TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
     # Uncomment the line
     sed -i 's/^#\(.*AllowRoot=True\)/\1/' /etc/gdm3/custom.conf
     echo "Line 'AllowRoot=True' uncommented in /etc/gdm3/custom.conf"
@@ -74,7 +74,6 @@ if ! grep -q "#  TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf;
     echo "Line 'AllowRoot=True' added to /etc/gdm3/custom.conf"
   fi
 fi
-
 
 
 
