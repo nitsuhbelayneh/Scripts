@@ -33,6 +33,63 @@ sudo apt install xrdp -y
 
 
 
+## Check if the line "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
+#if ! grep -q "^[^#].*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
+#  # Check if the line is commented
+#  if grep -q "^#.*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
+#    # Uncomment the line
+#    sed -i 's/^#\(.*AutomaticLoginEnable=True\)/\1/' /etc/gdm3/custom.conf
+#    echo "Line 'AutomaticLoginEnable=True' uncommented in /etc/gdm3/custom.conf"
+#  else
+#    # Add the line under [daemon]
+#    sed -i '/\[daemon\]/a AutomaticLoginEnable=True' /etc/gdm3/custom.conf
+#    echo "Line 'AutomaticLoginEnable=True' added to /etc/gdm3/custom.conf"
+#  fi
+#fi
+
+# Check if the line "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
+#if ! grep -q "^[^#].*AutomaticLogin=root" /etc/gdm3/custom.conf; then
+#  # Check if the line is commented
+#  if grep -q "^#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
+#    # Uncomment the line
+#    sed -i 's/^#\(.*AutomaticLogin=root\)/\1/' /etc/gdm3/custom.conf
+#    echo "Line 'AutomaticLogin=root' uncommented in /etc/gdm3/custom.conf"
+#  else
+#    # Add the line under [daemon]
+#    sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
+#    echo "Line 'AutomaticLogin=root' added to /etc/gdm3/custom.conf"
+#  fi
+#fi
+
+
+
+
+
+
+
+################################################################################################################
+
+
+
+## Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
+#if ! grep -q "#  TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
+#  # Check if the line is commented
+#  if grep -q "#  TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
+#    # Uncomment the line
+#    sed -i 's/^#\(.*AllowRoot=True\)/\1/' /etc/gdm3/custom.conf
+#    echo "Line 'AllowRoot=True' uncommented in /etc/gdm3/custom.conf"
+#  else
+#    # Add the line below "# TimedLoginDelay = 10"
+#    sed -i '/#  TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+#    echo "Line 'AllowRoot=True' added to /etc/gdm3/custom.conf"
+#  fi
+#fi
+
+
+
+
+###########################################################################################################################
+
 # Check if the line "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
 if ! grep -q "^[^#].*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
   # Check if the line is commented
@@ -61,17 +118,7 @@ if ! grep -q "^[^#].*AutomaticLogin=root" /etc/gdm3/custom.conf; then
   fi
 fi
 
-
-
-
-
-
-
-################################################################################################################
-
-
-
-# Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
+ Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
 if ! grep -q "#  TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
   # Check if the line is commented
   if grep -q "#  TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
@@ -84,53 +131,6 @@ if ! grep -q "#  TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; th
     echo "Line 'AllowRoot=True' added to /etc/gdm3/custom.conf"
   fi
 fi
-
-
-
-
-###########################################################################################################################
-
-## Check if the line "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
-#if ! grep -q "^[^#].*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
-#  # Check if the line is commented
-#  if grep -q "^#.*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
-#    # Uncomment the line
-#    sed -i 's/^#\(.*AutomaticLoginEnable=True\)/\1/' /etc/gdm3/custom.conf
-#    echo "Line 'AutomaticLoginEnable=True' uncommented in /etc/gdm3/custom.conf"
-#  else
-#    # Add the line under [daemon]
-#    sed -i '/\[daemon\]/a AutomaticLoginEnable=True' /etc/gdm3/custom.conf
-#    echo "Line 'AutomaticLoginEnable=True' added to /etc/gdm3/custom.conf"
-#  fi
-#fi
-
-## Check if the line "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
-#if ! grep -q "^[^#].*AutomaticLogin=root" /etc/gdm3/custom.conf; then
-#  # Check if the line is commented
-#  if grep -q "^#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
-#    # Uncomment the line
-#    sed -i 's/^#\(.*AutomaticLogin=root\)/\1/' /etc/gdm3/custom.conf
-#    echo "Line 'AutomaticLogin=root' uncommented in /etc/gdm3/custom.conf"
-#  else
-#    # Add the line under [daemon]
-#    sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
-#    echo "Line 'AutomaticLogin=root' added to /etc/gdm3/custom.conf"
-#  fi
-#fi
-
-# Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
-#if ! grep -q "#  TimedLoginDelay = 10.*AllowRoot=True" /etc/gdm3/custom.conf; then
-#  # Check if the line is commented
-#  if grep -q "#  TimedLoginDelay = 10.*#.*AllowRoot=True" /etc/gdm3/custom.conf; then
-#    # Uncomment the line
-#    sed -i 's/^#\(.*AllowRoot=True\)/\1/' /etc/gdm3/custom.conf
-#    echo "Line 'AllowRoot=True' uncommented in /etc/gdm3/custom.conf"
-#  else
-#    # Add the line below "# TimedLoginDelay = 10"
-#    sed -i '/#  TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-#    echo "Line 'AllowRoot=True' added to /etc/gdm3/custom.conf"
-#  fi
-#fi
 
 
 
