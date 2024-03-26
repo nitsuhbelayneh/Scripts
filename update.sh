@@ -14,24 +14,7 @@
 #install openshh-server and configure it so that root can ssh as well
 sudo apt install openssh-server -y
 
-
-
-
-
-
-
-
-
-## Check if the line "#PermitRootLogin prohibit-password" exists in /etc/ssh/sshd_config
-#if grep -q "#PermitRootLogin prohibit-password" /etc/ssh/sshd_config; then
-#  # Add a new line above the line
-#  sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-#  echo "Added a new line above the line '#PermitRootLogin prohibit-password' in sshd_config"
-#else
-#  echo "Line '#PermitRootLogin prohibit-password' does not exist in sshd_config"
-#fi
-
-
+# use the same formating as the below for the error that reapets the line when it is commeted and without comment, use an and operator and chek them both at the same time
 
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
 if grep -qE "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && ! grep -qE "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
@@ -41,31 +24,6 @@ if grep -qE "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && ! grep -qE "^\s*
 else
   echo "Line 'PermitRootLogin yes' is either not commented or does not exist in /etc/ssh/sshd_config"
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 sudo systemctl restart ssh 
 
