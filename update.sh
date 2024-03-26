@@ -136,30 +136,36 @@ else
   echo "Added line 'AutomaticLogin=root' under [daemon] in custom.conf"
 fi
 
+
+## Check if "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
+#if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf | grep -q "AllowRoot=True"; then
+#  # Check if the line is commented
+#  if grep -q "^#.*AllowRoot=True" /etc/gdm3/custom.conf; then
+#    # Add a new line below "# TimedLoginDelay = 10"
+#    sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+#    echo "Added a new line 'AllowRoot=True' below '# TimedLoginDelay = 10' in custom.conf"
+#  else
+#    echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
+#  fi
+#else
+#  # Add the line under "# TimedLoginDelay = 10"
+#  sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+#  echo "Added line 'AllowRoot=True' under '# TimedLoginDelay = 10' in custom.conf"
+#fi
+
+
+
 # Check if "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
-if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf | grep -q "AllowRoot=True"; then
-  # Check if the line is commented
-  if grep -q "^#.*AllowRoot=True" /etc/gdm3/custom.conf; then
-    # Add a new line below "# TimedLoginDelay = 10"
-    sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-    echo "Added a new line 'AllowRoot=True' below '# TimedLoginDelay = 10' in custom.conf"
-  else
-    echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
-  fi
+if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf && grep -q "^.*AllowRoot=True" /etc/gdm3/custom.conf; then
+  echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
 else
   # Add the line under "# TimedLoginDelay = 10"
   sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
   echo "Added line 'AllowRoot=True' under '# TimedLoginDelay = 10' in custom.conf"
 fi
 
-## Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
-#if grep -q "^[^#].*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
-#  echo "Line 'auth required pam_succeed_if.so user != root quite_success' is already commented in gdm-password"
-#else
-#  # Comment the line
-#  sed -i 's/^\(.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet\)/# \1/' /etc/pam.d/gdm-password
-#  echo "Commented the line 'auth required pam_succeed_if.so user != root quite_success' in gdm-password"
-#fi
+
+
 
 # Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
 if grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
