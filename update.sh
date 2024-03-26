@@ -22,25 +22,25 @@ sudo systemctl restart ssh
 
 #for desktop servers to enable rdp un comment the lines below
 
-#sudo apt install xserver-xorg-core -y
-#sudo apt install xorgxrdp -y
-#sudo apt install xrdp -y
+sudo apt install xserver-xorg-core -y
+sudo apt install xorgxrdp -y
+sudo apt install xrdp -y
 
 # Check if the lines are already present in the file /etc/gdm3/custom.conf
 #if grep -q "AutomaticLoginEnable=True" /etc/gdm3/custom.conf && grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf && grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
 #  echo "Lines already exist in /etc/gdm3/custom.conf"
 #else
   # Add the lines under [daemon]
-  #sed -i '/\[daemon\]/a AutomaticLoginEnable=True\nAutomaticLogin=root' /etc/gdm3/custom.conf
+  sed -i '/\[daemon\]/a AutomaticLoginEnable=True\nAutomaticLogin=root' /etc/gdm3/custom.conf
 
   # Add the line AllowRoot=True below # TimedLoginDelay = 10
-  #sed -i '/#  TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+  sed -i '/#  TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
 
   #echo "Lines added to /etc/gdm3/custom.conf"
 #fi
 
 # Comment out the line in /etc/pam.d/gdm-password
-#sed -i 's/^auth required     pam_succeed_if.so user != root quiet/#&/' /etc/pam.d/gdm-password
+sed -i 's/^auth required     pam_succeed_if.so user != root quiet/#&/' /etc/pam.d/gdm-password
 
 #cho "Line commented in /etc/pam.d/gdm-password"
 
