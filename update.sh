@@ -155,15 +155,24 @@ fi
 
 
 
+## Check if "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
+#if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf && grep -q "^.*AllowRoot=True" /etc/gdm3/custom.conf; then
+#  echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
+#else
+#  # Add the line under "# TimedLoginDelay = 10"
+#  sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+#  echo "Added line 'AllowRoot=True' under '# TimedLoginDelay = 10' in custom.conf"
+#fi
+
+
 # Check if "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
-if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf && grep -q "^.*AllowRoot=True" /etc/gdm3/custom.conf; then
-  echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
-else
+if grep -q "# TimedLoginDelay = 10" /etc/gdm3/custom.conf && ! grep -q "^.*AllowRoot=True" /etc/gdm3/custom.conf; then
   # Add the line under "# TimedLoginDelay = 10"
   sed -i '/# TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
   echo "Added line 'AllowRoot=True' under '# TimedLoginDelay = 10' in custom.conf"
+else
+  echo "Line 'AllowRoot=True' already exists below '# TimedLoginDelay = 10' in custom.conf"
 fi
-
 
 
 
