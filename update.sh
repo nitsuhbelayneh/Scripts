@@ -17,14 +17,58 @@ sudo systemctl restart qemu-guest-agent
 #install openshh-server and configure it so that root can ssh as well
 sudo apt install openssh-server -y
 
-# Check if the line "#PermitRootLogin prohibit-password" exists in /etc/ssh/sshd_config
-if grep -q "#PermitRootLogin prohibit-password" /etc/ssh/sshd_config; then
-  # Add a new line above the line
+
+
+
+
+
+
+
+
+## Check if the line "#PermitRootLogin prohibit-password" exists in /etc/ssh/sshd_config
+#if grep -q "#PermitRootLogin prohibit-password" /etc/ssh/sshd_config; then
+#  # Add a new line above the line
+#  sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
+#  echo "Added a new line above the line '#PermitRootLogin prohibit-password' in sshd_config"
+#else
+#  echo "Line '#PermitRootLogin prohibit-password' does not exist in sshd_config"
+#fi
+
+
+
+# Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
+if grep -qE "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && ! grep -qE "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
+  # Add a new line above "#PermitRootLogin prohibit-password"
   sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-  echo "Added a new line above the line '#PermitRootLogin prohibit-password' in sshd_config"
+  echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config"
 else
-  echo "Line '#PermitRootLogin prohibit-password' does not exist in sshd_config"
+  echo "Line 'PermitRootLogin yes' is either not commented or does not exist in /etc/ssh/sshd_config"
 fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 sudo systemctl restart ssh 
 
