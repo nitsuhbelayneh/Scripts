@@ -105,20 +105,37 @@
 
 
 
+## Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf
+#if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then 
+#  echo "The line "AllowRoot=True" alrady exists in /etc/gdm3/custom.conf"
+#  else 
+#    grep -q "#\s*AllowRoot=True" /etc/gdm3/custom.conf
+#    sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+#    echo "Line 'AllowRoot=True' was commented but now addes to /etc/gdm3/custom.conf"
+#  fi 
+#else
+#  # Add a new line above "# TimedLoginDelay = 10"
+#  sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+#  echo "Added line 'AllowRoot=True' in /etc/gdm3/custom.conf"
+#  
+#fi
+
+
+
 # Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf
-if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then 
-  echo "The line "AllowRoot=True" alrady exists in /etc/gdm3/custom.conf"
-  else 
-    grep -q "#\s*AllowRoot=True" /etc/gdm3/custom.conf
-    sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-    echo "Line 'AllowRoot=True' was commented but now addes to /etc/gdm3/custom.conf"
-  fi 
+if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then
+  echo "The line 'AllowRoot=True' already exists in /etc/gdm3/custom.conf"
 else
-  # Add a new line above "# TimedLoginDelay = 10"
-  sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-  echo "Added line 'AllowRoot=True' in /etc/gdm3/custom.conf"
-  
+  if grep -q "#\s*AllowRoot=True" /etc/gdm3/custom.conf; then
+    sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+    echo "Line 'AllowRoot=True' was commented but now added to /etc/gdm3/custom.conf"
+  else
+    sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
+    echo "Added line 'AllowRoot=True' in /etc/gdm3/custom.conf"
+  fi
 fi
+
+
 
 
 
