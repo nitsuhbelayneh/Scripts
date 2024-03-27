@@ -56,24 +56,21 @@ else
   fi
 fi
 
-#else
-#  # Add the line under [daemon]
-#  sed -i '/\[daemon\]/a AutomaticLoginEnable=True' /etc/gdm3/custom.conf
-#  echo "Added line 'AutomaticLoginEnable=True' under [daemon] in custom.conf"
-#fi
+# Check if "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
+if grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf; then
+  # Check if the line is commented
+  echo "Line 'AutomaticLogin=root' already exists in custom.conf"
+else
+  if grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf && grep -q "^#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
+    # Add a new line above the commented line
+    sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
+    #sed -i '/^#.*AutomaticLogin=root/i AutomaticLogin=root' /etc/gdm3/custom.conf
+    echo "Added a new line 'AutomaticLogin=root' above the commented line in custom.conf"
+  else
+    sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
+  fi
+fi
 
-
-## Check if "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
-#if grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf; then
-#  # Check if the line is commented
-#  if grep -q "^#.*AutomaticLogin=root" /etc/gdm3/custom.conf; then
-#    # Add a new line above the commented line
-#    sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
-#    #sed -i '/^#.*AutomaticLogin=root/i AutomaticLogin=root' /etc/gdm3/custom.conf
-#    echo "Added a new line 'AutomaticLogin=root' above the commented line in custom.conf"
-#  else
-#    echo "Line 'AutomaticLogin=root' already exists in custom.conf"
-#  fi
 #else
 #  # Add the line under [daemon]
 #  sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
