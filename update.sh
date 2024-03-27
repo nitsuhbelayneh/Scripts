@@ -19,18 +19,7 @@
 
 
 
-# Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
-if grep -q "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
-  echo "The line 'PermitRootLogin yes' already exists in /etc/ssh/sshd_config"
-else
-  if grep -q "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
-    sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-    echo "Line 'PermitRootLogin yes' was commented but now added to /etc/ssh/sshd_config"
-  else
-    sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-    echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config"
-  fi
-fi
+
 
 
 
