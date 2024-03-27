@@ -20,10 +20,10 @@
 
 
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
-if grep -q "^\s*PermitRootLogin[[:space:]]+yes" /etc/ssh/sshd_config; then
+if grep -q "PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
   echo "The line 'PermitRootLogin yes' already exists in /etc/ssh/sshd_config"
 else
-  if grep -q "#\s*PermitRootLogin[[:space:]]+yes" /etc/ssh/sshd_config; then
+  if grep -q "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
     sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
     echo "Line 'PermitRootLogin yes' was commented but now added to /etc/ssh/sshd_config"
   else
@@ -85,7 +85,7 @@ fi
 
 
 
-# Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf
+# Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf (this works the intended way in differnet cases)
 if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then
   echo "The line 'AllowRoot=True' already exists in /etc/gdm3/custom.conf"
 else
