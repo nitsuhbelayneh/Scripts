@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Update the package lists
-#sudo apt update
+sudo apt update
 
 # Upgrade installed packages
-#sudo apt-get dist-upgrade -y
+sudo apt-get dist-upgrade -y
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 #sudo apt install qemu-guest-agent -y
@@ -12,7 +12,7 @@
 
 
 #install openshh-server and configure it so that root can ssh as well
-#sudo apt install openssh-server -y
+sudo apt install openssh-server -y
 
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
 if grep -q "^\s*PermitRootLogin yes" /etc/ssh/sshd_config; then
@@ -27,19 +27,14 @@ else
   fi
 fi
 
-#sudo systemctl restart ssh 
+#Restart the ssh Service
+sudo systemctl restart ssh 
 
 
-#for desktop servers to enable rdp un comment the lines below
-
+#for desktop servers to install and enable rdp for root
 #sudo apt install xserver-xorg-core -y
-#sudo apt install xorgxrdp -y
-#sudo apt install xrdp -y
-
-
-######################################################################################################################################
-
-
+sudo apt install xorgxrdp -y
+sudo apt install xrdp -y
 
 # Check if "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
 if grep -q "^\s*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
@@ -72,20 +67,6 @@ else
   fi
 fi
 
-#else
-#  # Add the line under [daemon]
-#  sed -i '/\[daemon\]/a AutomaticLogin=root' /etc/gdm3/custom.conf
-#  echo "Added line 'AutomaticLogin=root' under [daemon] in custom.conf"
-#fi
-
-
-
-
-######################################################################################################################################
-
-
-#the below script works fine
-
 # Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf (this works the intended way in differnet cases)
 if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then
   echo "The line 'AllowRoot=True' already exists in /etc/gdm3/custom.conf"
@@ -108,9 +89,6 @@ else
   echo "Added a comment above the line 'auth required pam_succeed_if.so user != root quite_success' in gdm-password"
 fi
 
-
-
-
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
 
@@ -122,16 +100,5 @@ history -c
 
 # Delete the script file
 rm "$0"
-
-
-
-#the order shod be 
-#if 
-#  chek is the wanted line is in the wanted postion?
-#  print the line alrady exists
-#else 
-#  insert the line in the expected postion
-#  print the line has been insterted
-
 
 # next write the netplan configuration script
