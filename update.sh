@@ -106,10 +106,10 @@
 
 
 # Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf
-if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then
+if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then 
   echo "The line "AllowRoot=True" alrady exists in /etc/gdm3/custom.conf"
   else 
-   grep -q "#\s*AllowRoot=True" /etc/gdm3/custom.conf
+    grep -q "#\s*AllowRoot=True" /etc/gdm3/custom.conf
     sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
     echo "Line 'AllowRoot=True' was commented but now addes to /etc/gdm3/custom.conf"
   fi 
