@@ -93,7 +93,7 @@ fi
 #fi
 
 
-
+#the below script works fine
 
 # Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf (this works the intended way in differnet cases)
 if grep -q "^\s*AllowRoot=True" /etc/gdm3/custom.conf; then
@@ -110,20 +110,20 @@ fi
 
 
 
-## Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
-#if grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
-#  echo "Line 'auth required pam_succeed_if.so user != root quite_success' is already commented in gdm-password"
-#else
-#  # Add a comment above the line
-#  sed -i '/auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet/s/^/# /' /etc/pam.d/gdm-password
-#  echo "Added a comment above the line 'auth required pam_succeed_if.so user != root quite_success' in gdm-password"
-#fi
+# Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
+if grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
+  echo "Line 'auth required pam_succeed_if.so user != root quite_success' is already commented in gdm-password"
+else
+  # Add a comment above the line
+  sed -i '/auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet/s/^/# /' /etc/pam.d/gdm-password
+  echo "Added a comment above the line 'auth required pam_succeed_if.so user != root quite_success' in gdm-password"
+fi
 
 
 
 
 # Restart the rdp service after changing the configuration files
-#sudo systemctl restart xrdp
+sudo systemctl restart xrdp
 
 
 # Remove and clear
