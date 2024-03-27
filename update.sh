@@ -7,9 +7,11 @@ sudo apt update
 sudo apt-get dist-upgrade -y
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
-#sudo apt install qemu-guest-agent -y
-#sudo systemctl restart qemu-guest-agent
-<<comment
+sudo apt install qemu-guest-agent -y
+sudo systemctl restart qemu-guest-agent
+
+
+#<<comment
 
 #install openshh-server and configure it so that root can ssh as well
 sudo apt install openssh-server -y
@@ -30,6 +32,11 @@ fi
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
+#comment
+
+
+
+<<comment
 
 #for desktop servers to install and enable rdp for root
 #sudo apt install xserver-xorg-core -y
@@ -91,6 +98,7 @@ fi
 
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
+
 comment
 
 # Remove and clear
@@ -100,5 +108,3 @@ history -c
 
 # Delete the script file
 rm "$0"
-
-# next write the netplan configuration script
