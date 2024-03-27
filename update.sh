@@ -14,12 +14,6 @@
 #install openshh-server and configure it so that root can ssh as well
 #sudo apt install openssh-server -y
 
-##############################################################################################################################
-
-
-
-
-
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
 if grep -q "^\s*PermitRootLogin yes" /etc/ssh/sshd_config; then
   echo "The line 'PermitRootLogin yes' already exists in /etc/ssh/sshd_config"
@@ -33,34 +27,6 @@ else
   fi
 fi
 
-
-## Check if "PermitRootLogin yes" exists and is uncommented in /etc/ssh/sshd_config
-#if grep -q "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
-#  echo "The line 'PermitRootLogin yes' already exists and is uncommented in /etc/ssh/sshd_config"
-#else
-#  if grep -q "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && grep -q "^\s*#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
-#    sed -i '/#PermitRootLogin\s+prohibit-password/i PermitRootLogin yes' /etc/gdm3/custom.conf
-#    #sed -i '/^#PermitRootLogin\s+prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-#    #sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-#    #sed -i '/^\s*#\s*PermitRootLogin\s+yes/s/^#\s*//' /etc/ssh/sshd_config
-#    #sed -i '/#\s*#PermitRootLogin\s+prohibit-password/i PermitRootLogin yes' /etc/gdm3/custom.conf
-#    echo "Line 'PermitRootLogin yes' was commented but is now uncommented in /etc/ssh/sshd_config"
-#  else
-#    sed -i '/#PermitRootLogin\s+prohibit-password/i PermitRootLogin yes' /etc/gdm3/custom.conf
-#    #sed -i '/#\s*#PermitRootLogin\s+prohibit-password/i PermitRootLogin yes' /etc/gdm3/custom.conf
-#    #sed -i '/^\s*#\s*PermitRootLogin\s+yes/s/^#\s*//' /etc/ssh/sshd_config
-#    #sed -i '/^#PermitRootLogin\s+prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-#    echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config"
-#  fi
-#fi
-
-
-
-
-
-
-######################################################################################################################################
-
 #sudo systemctl restart ssh 
 
 
@@ -71,27 +37,32 @@ fi
 #sudo apt install xrdp -y
 
 
+######################################################################################################################################
 
 
 
-## Check if "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
-#if grep -qE "^\s*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
-#  # Check if the line is commented
-#  if ! grep -qE "^#.*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
-#    # Add a new line above the commented line
-#    echo "Line 'AutomaticLoginEnable=True' already exists in custom.conf"
-#    #sed -i '/^#.*AutomaticLoginEnable=True/i AutomaticLoginEnable=True' /etc/gdm3/custom.conf
-#    
-#  else
-#    sed -i '/\[daemon\]/a AutomaticLoginEnable=True' /etc/gdm3/custom.conf
-#    echo "Added a new line 'AutomaticLoginEnable=True' above the commented line in custom.conf"
-#  fi
+# Check if "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
+if grep -q "^\s*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
+  # Check if the line is commented
+  echo "Line 'AutomaticLoginEnable=True' already exists in custom.conf"
+else
+  if grep -q "^\s*AutomaticLoginEnable=True" /etc/gdm3/custom.conf && grep -q "^#.*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
+    # Add a new line above the commented line
+    sed -i '/^#.*AutomaticLoginEnable=True/i AutomaticLoginEnable=True' /etc/gdm3/custom.conf
+    echo "Added a new line 'AutomaticLoginEnable=True' above the commented line in custom.conf"
+  else
+    sed -i '/\[daemon\]/a AutomaticLoginEnable=True' /etc/gdm3/custom.conf
+    echo "Added a new line 'AutomaticLoginEnable=True' under [daemon] in custom.conf"
+  fi
+fi
+
 #else
 #  # Add the line under [daemon]
 #  sed -i '/\[daemon\]/a AutomaticLoginEnable=True' /etc/gdm3/custom.conf
 #  echo "Added line 'AutomaticLoginEnable=True' under [daemon] in custom.conf"
 #fi
-#
+
+
 ## Check if "AutomaticLogin=root" exists in /etc/gdm3/custom.conf
 #if grep -q "AutomaticLogin=root" /etc/gdm3/custom.conf; then
 #  # Check if the line is commented
@@ -110,6 +81,11 @@ fi
 #fi
 
 
+
+
+######################################################################################################################################
+
+
 #the below script works fine
 
 # Check if "AllowRoot=True" exists and is commented in /etc/gdm3/custom.conf (this works the intended way in differnet cases)
@@ -124,8 +100,6 @@ else
     echo "Added line 'AllowRoot=True' in /etc/gdm3/custom.conf"
   fi
 fi
-
-
 
 # Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
 if grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
