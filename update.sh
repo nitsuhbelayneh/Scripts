@@ -25,7 +25,7 @@
 if grep -Eq "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
   echo "The line 'PermitRootLogin yes' already exists and is uncommented in /etc/ssh/sshd_config"
 else
-  if grep -Eq "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config || grep -Eq "^\s*#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
+  if grep -Eq "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && grep -Eq "^\s*#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
     sed -i '/^\s*#\s*PermitRootLogin\s+yes/s/^#\s*//' /etc/ssh/sshd_config
     echo "Line 'PermitRootLogin yes' was commented but is now uncommented in /etc/ssh/sshd_config"
   else
