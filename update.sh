@@ -14,17 +14,23 @@
 #install openshh-server and configure it so that root can ssh as well
 #sudo apt install openssh-server -y
 
-# use the same formating as the below for the error that reapets the line when it is commeted and without comment, use an and operator and chek them both at the same time
+##############################################################################################################################
 
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
-#if grep -q "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config && ! grep -q "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
-#  # Add a new line above "#PermitRootLogin prohibit-password"
-#  #sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-#  echo " Line 'PermitRootLogin yes' exist in /etc/ssh/sshd_config"
-#else
-#  sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
-#  echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config"
-#fi
+if grep -q "^\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
+  echo "The line "PermitRootLogin yes" alrady exists in /etc/ssh/sshd_config"
+else 
+  if grep -q "#\s*PermitRootLogin\s+yes" /etc/ssh/sshd_config; then
+    # Add a new line above "#PermitRootLogin prohibit-password"
+    sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
+    echo " Line 'PermitRootLogin yes' was commented but now added to /etc/ssh/sshd_config"
+  else
+    sed -i '/#PermitRootLogin prohibit-password/i PermitRootLogin yes' /etc/ssh/sshd_config
+    echo "Added line 'PermitRootLogin yes' above '#PermitRootLogin prohibit-password' in /etc/ssh/sshd_config"
+fi
+
+
+######################################################################################################################################
 
 #sudo systemctl restart ssh 
 
@@ -74,30 +80,6 @@
 #  echo "Added line 'AutomaticLogin=root' under [daemon] in custom.conf"
 #fi
 
-###################################################################################################################
-
-
-#for the command below use the format for the ssh and fix the problem
-
-
-# Check if the line "AllowRoot=True" exists below "# TimedLoginDelay = 10" in /etc/gdm3/custom.conf
-#if grep -q "AllowRoot=True" /etc/gdm3/custom.conf; then
-#  # Check if the line is commented
-#  if grep -q "^#.*AllowRoot=True" /etc/gdm3/custom.conf; then
-#    # Uncomment the line
-#    sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-#    echo "Line 'AllowRoot=True' uncommented in /etc/gdm3/custom.conf"
-#  else
-#    echo "Line 'AllowRoot=True' already exists in /etc/gdm3/custom.conf"
-#  fi
-#else
-#  # Add the line below "# TimedLoginDelay = 10"
-#  sed -i '/#\s*TimedLoginDelay = 10/a AllowRoot=True' /etc/gdm3/custom.conf
-#  echo "Line 'AllowRoot=True' added to /etc/gdm3/custom.conf"
-#fi
-
-
-
 
 
 
@@ -115,10 +97,6 @@ else
 fi
 
 
-
-
-
-##############################################################################################################################
 
 ## Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
 #if grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
