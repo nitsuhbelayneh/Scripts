@@ -116,8 +116,8 @@ history -c
 #echo -n > ~/.bash_history
 #truncate -s 0 ~/.bash_history
 
-rm ~/.bash_history
-touch ~/.bash_history
+sudo rm ~/.bash_history
+sudo touch ~/.bash_history
 
 
 
