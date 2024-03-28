@@ -108,8 +108,8 @@ sudo apt autoremove -y
 history -c
 
 #Remove the bash history
-cat /dev/null > ~/.bash_history 
-
+#cat /dev/null > ~/.bash_history 
+cat /dev/null > ~/.bash_history
 
 # Delete the script file
 rm "$0"
