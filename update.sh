@@ -108,13 +108,13 @@ comment
 sudo apt autoremove -y
 
 #Clear command history 
-history -c
+#history -c
 
 #Remove the bash history
 sudo cat /dev/null > ~/.bash_history 
-#cat /dev/null > ~/.bash_history
-#echo -n > ~/.bash_history
-#truncate -s 0 ~/.bash_history
+sudo cat /dev/null > ~/.bash_history
+sudo echo -n > ~/.bash_history
+sudo truncate -s 0 ~/.bash_history
 
 #sudo rm ~/.bash_history
 #sudo touch ~/.bash_history
