@@ -117,8 +117,8 @@ sudo apt autoremove -y
 #sudo truncate -s 0 ~/.bash_history
 
 
-sudo rm /home/clean/.bash_history
-sudo touch /home/clean/.bash_history
+sudo rm .bash_history
+sudo touch .bash_history
 
 #sudo -i  # Switch to root user
 #history -c  # Clear command history for regular user
