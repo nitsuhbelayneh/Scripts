@@ -119,6 +119,12 @@ sudo truncate -s 0 ~/.bash_history
 #sudo rm ~/.bash_history
 #sudo touch ~/.bash_history
 
+#sudo -i  # Switch to root user
+#history -c  # Clear command history for regular user
+#exit  # Exit from root user session
+#history -c  # Clear command history for root user
+
+
 
 
 # Delete the script file
