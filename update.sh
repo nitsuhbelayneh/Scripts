@@ -111,13 +111,13 @@ sudo apt autoremove -y
 history -c
 
 #Remove the bash history
-#cat /dev/null > ~/.bash_history 
+sudo cat /dev/null > ~/.bash_history 
 #cat /dev/null > ~/.bash_history
 #echo -n > ~/.bash_history
 #truncate -s 0 ~/.bash_history
 
-sudo rm ~/.bash_history
-sudo touch ~/.bash_history
+#sudo rm ~/.bash_history
+#sudo touch ~/.bash_history
 
 
 
