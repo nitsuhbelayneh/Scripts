@@ -31,6 +31,9 @@ netplan_config="network:
       - to: 10.175.206.40/29
         via: 172.16.143.49"
 
+# Define the netplan configuration file path
+netplan_file="/etc/netplan/new"
+#netplan_file="/etc/netplan/01-network-manager-all.yaml"
 
 echo "Netplan file path: $netplan_file"
 
@@ -44,11 +47,6 @@ else
   echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
 fi
 
-
-
-# Define the netplan configuration file path
-netplan_file="/etc/netplan/new"
-#netplan_file="/etc/netplan/new/01-network-manager-all.yaml"
 
 # Write the netplan configuration to the file
 #echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
