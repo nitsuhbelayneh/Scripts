@@ -110,8 +110,8 @@ history -c
 #Remove the bash history
 #cat /dev/null > ~/.bash_history 
 #cat /dev/null > ~/.bash_history
-echo -n > ~/.bash_history
-
+#echo -n > ~/.bash_history
+truncate -s 0 ~/.bash_history
 
 # Delete the script file
 rm "$0"
