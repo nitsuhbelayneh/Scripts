@@ -105,7 +105,7 @@ sudo systemctl restart xrdp
 sudo apt autoremove -y
 
 #Clear command history 
-history -c
+#history -c
 
 #Remove the bash history
 #cat /dev/null > ~/.bash_history 
