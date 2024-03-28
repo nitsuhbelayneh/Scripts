@@ -1,101 +1,11 @@
 #!/bin/bash
 
 
+############################################################################################################################################
 
-##################################################################################################
-
-
-# Define the netplan configuration template
-netplan_config="network:
-  version: 2
-  renderer: NetworkManager
-  ethernets:
-    ens18:
-      addresses:
-      - 196.189.155.143/27
-      routes:
-      - to: 0.0.0.0/0
-        via: 196.189.155.129
-      nameservers:
-        addresses:
-        - 10.3.1.5 
-        - 8.8.8.8
-    ens19:
-      addresses:
-      - 172.16.143.50/29
-      routes:
-      - to: 10.190.10.16/32
-        via: 172.16.143.49
-      - to: 10.204.182.92/32
-        via: 172.16.143.49
-      - to: 10.175.206.40/29
-        via: 172.16.143.49"
-
-# Define the netplan configuration file path
-netplan_file="/etc/netplan/new"
-#netplan_file="/etc/netplan/01-network-manager-all.yaml"
-
-echo "Netplan file path: $netplan_file"
-
-
-
-
-# Check if the netplan configuration file already exists
-if [[ -f "$netplan_file" ]]; then
-  # Check if there is existing configuration written
-  if grep -q 'network:' "$netplan_file"; then
-    # Comment out the existing configuration
-    sed -i 's/^/#/' "$netplan_file"
-    # Add the new configuration after commented lines
-    echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
-  else
-    # Write the netplan configuration to the file
-    echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
-  fi
-else
-  # Write the netplan configuration to the file
-  echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
-fi
-
-
-
-
-
-## Check if the netplan configuration file already exists
-#if [[ -f "$netplan_file" ]]; then
-#  # Comment out the existing configuration
-#  sudo sed -i '/^ens18:/,/^ens19:/ s/^/#/' "$netplan_file"
-#  # Add the new configuration
-#  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
-#else
-#  # Write the netplan configuration to the file
-#  echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
-#fi
-
-
-# Check if the netplan configuration file already exists
-#if [[ -f "$netplan_file" ]]; then
-#  # Append the new configuration to the file
-#  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
-#else
-#  # Write the netplan configuration to the file
-#  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
-#fi
-
-
-# Write the netplan configuration to the file
-#echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
-
-# Apply the netplan configuration
-#sudo netplan apply
-
-
-
-
-
-################################################################################################
 
 <<comment
+
 # Update the package lists
 sudo apt update
 
@@ -108,6 +18,7 @@ sudo systemctl restart qemu-guest-agent
 
 comment
 
+############################################################################################################################################
 
 <<comment
 
@@ -132,7 +43,7 @@ sudo systemctl restart ssh
 
 comment
 
-
+############################################################################################################################################
 
 <<comment
 
@@ -200,6 +111,68 @@ sudo systemctl restart xrdp
 comment
 
 
+############################################################################################################################################
+
+<<comment
+
+# Define the netplan configuration template
+netplan_config="network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    ens18:
+      addresses:
+      - 196.189.155.143/27
+      routes:
+      - to: 0.0.0.0/0
+        via: 196.189.155.129
+      nameservers:
+        addresses:
+        - 10.3.1.5 
+        - 8.8.8.8
+    ens19:
+      addresses:
+      - 172.16.143.50/29
+      routes:
+      - to: 10.190.10.16/32
+        via: 172.16.143.49
+      - to: 10.204.182.92/32
+        via: 172.16.143.49
+      - to: 10.175.206.40/29
+        via: 172.16.143.49"
+
+# Define the netplan configuration file path
+netplan_file="/etc/netplan/new"
+#netplan_file="/etc/netplan/01-network-manager-all.yaml"
+
+
+# Check if the netplan configuration file already exists
+if [[ -f "$netplan_file" ]]; then
+  # Check if there is existing configuration written
+  if grep -q 'network:' "$netplan_file"; then
+    # Comment out the existing configuration
+    sed -i 's/^/#/' "$netplan_file"
+    # Add the new configuration after commented lines
+    echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
+  else
+    # Write the netplan configuration to the file
+    echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
+  fi
+else
+  # Write the netplan configuration to the file
+  echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
+fi
+
+
+# Apply the netplan configuration
+#sudo netplan apply
+
+
+comment
+
+
+############################################################################################################################################
+
 <<comment
 # Remove residual packages
 sudo apt autoremove -y
@@ -208,6 +181,8 @@ sudo apt autoremove -y
 history -c
 
 comment
+
+############################################################################################################################################
 
 #Remove the bash history
 sudo truncate -s 0 .bash_history
