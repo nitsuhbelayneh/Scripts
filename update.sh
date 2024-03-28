@@ -1,5 +1,6 @@
 #!/bin/bash
 
+<<comment
 # Update the package lists
 sudo apt update
 
@@ -10,8 +11,10 @@ sudo apt-get dist-upgrade -y
 sudo apt install qemu-guest-agent -y
 sudo systemctl restart qemu-guest-agent
 
+comment
 
-#<<comment
+
+<<comment
 
 #install openshh-server and configure it so that root can ssh as well
 sudo apt install openssh-server -y
@@ -32,11 +35,11 @@ fi
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
-#comment
+comment
 
 
 
-#<<comment
+<<comment
 
 #for desktop servers to install and enable rdp for root
 sudo apt install xserver-xorg-core -y
@@ -89,17 +92,17 @@ fi
 
 # Check if the line "auth required pam_succeed_if.so user != root quite_success" is already commented in /etc/pam.d/gdm-password
 if grep -q "^#.*auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet" /etc/pam.d/gdm-password; then
-  echo "Line 'auth required pam_succeed_if.so user != root quite_success' is already commented in gdm-password"
+  echo "Line 'auth required pam_succeed_if.so user != root quite_success' is already commented in /etc/pam.d/gdm-password"
 else
   # Add a comment above the line
   sed -i '/auth\s\+required\s\+pam_succeed_if\.so\s\+user\s\+!=\s\+root\s\+quiet/s/^/# /' /etc/pam.d/gdm-password
-  echo "Added a comment above the line 'auth required pam_succeed_if.so user != root quite_success' in gdm-password"
+  echo "Added a comment above the line 'auth required pam_succeed_if.so user != root quite_success' in /etc/pam.d/gdm-password"
 fi
 
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
 
-#comment
+comment
 
 # Remove residual packages
 sudo apt autoremove -y
