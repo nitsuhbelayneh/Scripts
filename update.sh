@@ -45,7 +45,7 @@ fi
 
 
 # Define the netplan configuration file path
-netplan_file="/etc/netplan/new/new"
+netplan_file="/etc/netplan/new"
 #netplan_file="/etc/netplan/new/01-network-manager-all.yaml"
 
 # Write the netplan configuration to the file
