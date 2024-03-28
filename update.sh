@@ -5,17 +5,6 @@
 ##################################################################################################
 
 
-# Define the netplan configuration file path
-netplan_file="/etc/netplan/new" #test file
-#netplan_file="/etc/netplan/new/01-network-manager-all.yaml" #Real file
-
-
-# Check if the netplan configuration file already exists
-if [[ -f "$netplan_file" ]]; then
-  # Comment out the existing configuration
-  sudo sed -i 's/^/#/' "$netplan_file"
-fi
-
 # Define the netplan configuration template
 netplan_config="network:
   version: 2
@@ -43,8 +32,24 @@ netplan_config="network:
         via: 172.16.143.49"
 
 
+
+# Check if the netplan configuration file already exists
+if [[ -f "$netplan_file" ]]; then
+  # Append the new configuration to the file
+  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
+else
+  # Write the netplan configuration to the file
+  echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
+fi
+
+
+
+# Define the netplan configuration file path
+netplan_file="/etc/netplan/new/new"
+#netplan_file="/etc/netplan/new/01-network-manager-all.yaml"
+
 # Write the netplan configuration to the file
-echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
+#echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
 
 # Apply the netplan configuration
 #sudo netplan apply
