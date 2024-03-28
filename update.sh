@@ -32,6 +32,8 @@ netplan_config="network:
         via: 172.16.143.49"
 
 
+echo "Netplan file path: $netplan_file"
+
 
 # Check if the netplan configuration file already exists
 if [[ -f "$netplan_file" ]]; then
