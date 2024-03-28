@@ -39,7 +39,7 @@ sudo systemctl restart ssh
 #<<comment
 
 #for desktop servers to install and enable rdp for root
-#sudo apt install xserver-xorg-core -y
+sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
 
@@ -102,7 +102,7 @@ sudo systemctl restart xrdp
 #comment
 
 # Remove and clear
-sudo apt autoremove
+sudo apt autoremove -y
 history -c
 
 
