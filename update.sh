@@ -39,7 +39,7 @@ if [[ -f "$netplan_file" ]]; then
   echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
 else
   # Write the netplan configuration to the file
-  echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
+  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
 fi
 
 
