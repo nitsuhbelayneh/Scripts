@@ -101,10 +101,15 @@ sudo systemctl restart xrdp
 
 #comment
 
-# Remove and clear
+# Remove residual packages
 sudo apt autoremove -y
+
+#Clear command history 
 history -c
+
+#Remove the bash history
+#cat /dev/null > ~/.bash_history 
 
 
 # Delete the script file
-rm "$0"
+#rm "$0"
