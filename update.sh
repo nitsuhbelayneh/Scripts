@@ -38,14 +38,29 @@ netplan_file="/etc/netplan/new"
 echo "Netplan file path: $netplan_file"
 
 
+
 # Check if the netplan configuration file already exists
 if [[ -f "$netplan_file" ]]; then
-  # Append the new configuration to the file
+  # Comment out the existing configuration
+  sudo sed -i '/^ens18:/,/^ens19:/ s/^/#/' "$netplan_file"
+  # Add the new configuration
   echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
 else
   # Write the netplan configuration to the file
-  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
+  echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
 fi
+
+
+
+
+# Check if the netplan configuration file already exists
+#if [[ -f "$netplan_file" ]]; then
+#  # Append the new configuration to the file
+#  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
+#else
+#  # Write the netplan configuration to the file
+#  echo "$netplan_config" | sudo tee -a "$netplan_file" > /dev/null
+#fi
 
 
 # Write the netplan configuration to the file
