@@ -41,10 +41,10 @@ netplan_config="network:
   ethernets:
     ens18:
       addresses:
-      - 196.189.155.143/27
+      - 196.189.155.143/27 #Change This
       routes:
       - to: 0.0.0.0/0
-        via: 196.189.155.129
+        via: 196.189.155.129 #Change This
       nameservers:
         addresses:
         - 10.3.1.5 
@@ -54,11 +54,11 @@ netplan_config="network:
       - 172.16.143.50/29
       routes:
       - to: 10.190.10.16/32
-        via: 172.16.143.49
+        via: 172.16.143.49 #Change This
       - to: 10.204.182.92/32
-        via: 172.16.143.49
+        via: 172.16.143.49 #Change This
       - to: 10.175.206.40/29
-        via: 172.16.143.49"
+        via: 172.16.143.49" #Change This
 
 # Define the netplan configuration file path
 netplan_file="/etc/netplan/new"
