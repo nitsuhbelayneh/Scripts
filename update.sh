@@ -122,20 +122,6 @@ comment
 # Define the netplan configuration template
 #Add the configuration below
 
-netplan_config="network:
-  version: 2
-  renderer: NetworkManager
-  ethernets:
-    ens18:
-      addresses:
-      - 196.189.155.143/27
-      routes:
-      - to: 0.0.0.0/0
-        via: 196.189.155.129
-      nameservers:
-        addresses:
-        - 10.3.1.5 
-        - 8.8.8.8"
 
 
 # Define the netplan configuration file path
