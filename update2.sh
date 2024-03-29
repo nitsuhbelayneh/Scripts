@@ -1,5 +1,8 @@
+#!/bin/bash
+
 #<<comment
 
+############################################################################################################################################
 
 #add this to the main script (update.sh)
 
@@ -28,11 +31,7 @@ netplan_config="network:
       - to: 10.175.206.40/29
         via: 172.16.143.49"
 
-
-
-
-
-
+############################################################################################################################################
 
 # Define the netplan configuration template
 netplan_config="network:
@@ -64,7 +63,6 @@ netplan_config="network:
 netplan_file="/etc/netplan/new"
 #netplan_file="/etc/netplan/01-network-manager-all.yaml"
 
-
 # Check if the netplan configuration file already exists
 if [[ -f "$netplan_file" ]]; then
   # Check if there is existing configuration written
@@ -85,7 +83,6 @@ else
   echo "The file $netplan_file does not exists"
   #echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
 fi
-
 
 # Apply the netplan configuration
 sudo netplan apply
