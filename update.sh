@@ -11,11 +11,17 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
+#comment
+
+############################################################################################################################################
+
+<<comment
+
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 #sudo apt install qemu-guest-agent -y
 #sudo systemctl restart qemu-guest-agent
 
-#comment
+comment
 
 ############################################################################################################################################
 
