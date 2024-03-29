@@ -149,8 +149,8 @@ netplan_file="/etc/netplan/new"
 # Check if the netplan configuration file already exists
 if [[ -f "$netplan_file" ]]; then
   # Check if there is existing configuration written
-  if grep -qs '^' "$netplan_file"; then
-  #if grep -q 'network:' "$netplan_file"; then
+  #if grep -qs '^' "$netplan_file"; then
+  if grep -q 'network:' "$netplan_file"; then
     # Comment out the existing configuration
     sed -i 's/^/#/' "$netplan_file"
     # Add the new configuration after commented lines
