@@ -117,7 +117,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Define the netplan configuration template
 #Add the configuration below
@@ -164,7 +164,7 @@ fi
 # Apply the netplan configuration
 sudo netplan apply
 
-#comment
+comment
 
 ############################################################################################################################################
 
