@@ -160,7 +160,8 @@ if [[ -f "$netplan_file" ]]; then
   fi
 else
   # Write the netplan configuration to the file
-  echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
+  echo "The file $netplan_file does not exists"
+  #echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
 fi
 
 
