@@ -25,7 +25,7 @@ sudo systemctl restart qemu-guest-agent
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #install openshh-server and configure it so that root can ssh as well
 sudo apt install openssh-server -y
@@ -46,7 +46,7 @@ fi
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
-#comment
+comment
 
 ############################################################################################################################################
 
