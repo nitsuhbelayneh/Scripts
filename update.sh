@@ -170,8 +170,8 @@ sudo apt autoremove -y
 
 #remove xfc
 
-sudo apt-get purge xfconf xfce4-utils xfwm4 xfce4-session xfdesktop4 exo-utils xfce4-panel xfce4-terminal  thunar
-
+#sudo apt-get purge xfconf xfce4-utils xfwm4 xfce4-session xfdesktop4 exo-utils xfce4-panel xfce4-terminal  thunar
+sudo apt autoremove --purge xfce*
 
 #comment
 
