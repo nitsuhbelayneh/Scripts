@@ -158,15 +158,36 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
+
+#Remove xrdp
+
+sudo apt-get remove xrdp -y
+sudo apt-get remove --auto-remove xrdp -y
+sudo apt-get purge xrdp -y
+sudo apt-get purge --auto-remove xrdp -y
+sudo apt autoremove -y
+
+#remove xfc
+
+sudo apt-get purge xfconf xfce4-utils xfwm4 xfce4-session xfdesktop4 exo-utils xfce4-panel xfce4-terminal  thunar
+
+
+#comment
+
+############################################################################################################################################
+
+#<<comment
 
 # Remove residual packages
+sudo apt-get clean -y
+sudo apt autoremove -y
 sudo apt autoremove -y
 
 #Clear command history 
 history -c
 
-comment
+#comment
 
 ############################################################################################################################################
 
