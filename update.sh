@@ -124,6 +124,10 @@ comment
 
 
 
+
+
+
+
 # Define the netplan configuration file path
 #netplan_file="/etc/netplan/new"
 netplan_file="/etc/netplan/01-network-manager-all.yaml"
