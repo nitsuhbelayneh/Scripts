@@ -123,9 +123,30 @@ comment
 #Add the configuration below
 
 
-
-
-
+netplan_config="network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    ens18:
+      addresses:
+      - 
+      routes:
+      - to: 
+        via: 
+      nameservers:
+        addresses:
+        - 
+        - 8.8.8.8
+    ens19:
+      addresses:
+      - 
+      routes:
+      - to: 
+        via: 
+      - to: 
+        via: 
+      - to: 
+        via: "
 
 
 # Define the netplan configuration file path
