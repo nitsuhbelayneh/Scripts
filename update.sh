@@ -52,10 +52,18 @@ comment
 
 #<<comment
 
-#for desktop servers to install and enable rdp for root
+#for desktop servers to install xrdp
 sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
+
+#comment
+
+############################################################################################################################################
+
+<<comment
+
+#Enable rdp for root
 
 # Check if "AutomaticLoginEnable=True" exists in /etc/gdm3/custom.conf
 if grep -q "^\s*AutomaticLoginEnable=True" /etc/gdm3/custom.conf; then
@@ -113,7 +121,7 @@ fi
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
 
-#comment
+comment
 
 ############################################################################################################################################
 
