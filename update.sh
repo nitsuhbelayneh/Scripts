@@ -50,7 +50,7 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #for desktop servers to install and enable rdp for root
 sudo apt install xserver-xorg-core -y
@@ -113,7 +113,7 @@ fi
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
 
-comment
+#comment
 
 ############################################################################################################################################
 
