@@ -120,8 +120,8 @@ comment
 <<comment
 
 # Define the netplan configuration template
-#Add the configuration below
 
+#Insert the IP information below
 
 netplan_config="network:
   version: 2
@@ -147,7 +147,6 @@ netplan_config="network:
         via: 
       - to: 
         via: "
-
 
 # Define the netplan configuration file path
 #netplan_file="/etc/netplan/new"
