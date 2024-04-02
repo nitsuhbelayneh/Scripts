@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add a user to the sudoer group in debian
-sudoers_file="etc/sudoers"
+sudoers_file="/etc/sudoers"
 if [[ -f "$sudoers_file" ]]; then
   #sed -i '/#\s*root	ALL=(ALL:ALL) ALL/a <username>	ALL=(ALL:ALL) ALL' /etc/sudoers
   sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a cleanALL=(ALL:ALL) ALL' /etc/sudoers
