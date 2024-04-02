@@ -25,18 +25,18 @@ sudo systemctl restart qemu-guest-agent
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #install openshh-server
 sudo apt install openssh-server -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
 #Configure ssh so that root can ssh as well
 
-<<comment
+#<<comment
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
 if grep -q "^\s*PermitRootLogin yes" /etc/ssh/sshd_config; then
   echo "The line 'PermitRootLogin yes' already exists in /etc/ssh/sshd_config"
@@ -50,7 +50,7 @@ else
   fi
 fi
 
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -168,15 +168,14 @@ netplan_config="network:
         via: 
       - to: 
         via: "
-
+        
 # Define the netplan configuration file path
-#netplan_file="/etc/netplan/new"
 netplan_file="/etc/netplan/01-network-manager-all.yaml"
 
 # Check if the netplan configuration file already exists
 if [[ -f "$netplan_file" ]]; then
   # Check if there is existing configuration written
-  #Check for any thing that is written in the configuration file
+  # Check for any thing that is written in the configuration file
   if grep -qs '^' "$netplan_file"; then  
     # Comment out the existing configuration
     sed -i 's/^/#/' "$netplan_file"
@@ -187,9 +186,8 @@ if [[ -f "$netplan_file" ]]; then
     echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
   fi
 else
-  # Write the netplan configuration to the file
+  # The file does not exists
   echo "The file $netplan_file does not exists"
-  #echo "$netplan_config" | sudo tee "$netplan_file" > /dev/null
 fi
 
 # Apply the netplan configuration
