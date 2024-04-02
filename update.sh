@@ -1,15 +1,13 @@
 #!/bin/bash
 
 
-sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
+#sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
 
 <<comment
 # Add a user to the sudoer group in debian
 sudoers_file="/etc/sudoers"
 if [[ -f "$sudoers_file" ]]; then
-  #sed -i '/#\s*root	ALL=(ALL:ALL) ALL/a <username>	ALL=(ALL:ALL) ALL' /etc/sudoers
-  sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
-  echo "Add the user the sudoers group"
+  echo "ofund it"
 else
   echo "The file does not exist in /etc/sudoers"
 fi
