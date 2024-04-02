@@ -3,6 +3,7 @@
 
 #sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
 sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
+
 <<comment
 username="clean"
 sudoers_file="/etc/sudoers"
