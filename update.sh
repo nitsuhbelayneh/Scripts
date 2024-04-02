@@ -2,8 +2,8 @@
 
 
 #sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
-
-#<<comment
+sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
+<<comment
 username="clean"
 sudoers_file="/etc/sudoers"
 
@@ -15,7 +15,7 @@ if id "$username" >/dev/null 2>&1; then
 else
     echo "User $username does not exist."
 fi
-#comment
+comment
 
 ############################################################################################################################################
 
