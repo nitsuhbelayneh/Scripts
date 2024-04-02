@@ -5,7 +5,7 @@
 
 #<<comment
 # Add a user to the sudoer group in debian
-sudoers_file="/etc/sudoers"
+sudoers_file="visudo"
 if [[ -f "$sudoers_file" ]]; then
   echo "found it"
 else
