@@ -1,9 +1,18 @@
 #!/bin/bash
 
+# Add a user to the sudoer group in debian
+sudoers_file="etc/sudoers"
+if [[ -f "$sudoers_file" ]]; then
+  #sed -i '/#\s*root	ALL=(ALL:ALL) ALL/a <username>	ALL=(ALL:ALL) ALL' /etc/sudoers
+  sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a cleanALL=(ALL:ALL) ALL' /etc/sudoers
+  echo "Add the user the sudoers group"
+else
+  echo "The file does not exist in /etc/sudoers"
+fi
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Update the package lists
 sudo apt update
@@ -11,17 +20,7 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
-# Add a user to the sudoer group in debian
-sudoes_file="etc/sudoers"
-if [[ -f "$sudoes_file" ]]; then
-  #sed -i '/#\s*root	ALL=(ALL:ALL) ALL/a <username>	ALL=(ALL:ALL) ALL' /etc/sudoers
-  sed -i '/#\s*root	ALL=(ALL:ALL) ALL/a clean	ALL=(ALL:ALL) ALL' /etc/sudoers
-  echo "Add the user the sudoers group"
-else
-  echo "The file does not exist in /etc/sudoers"
-fi
-
-#comment
+comment
 
 ############################################################################################################################################
 
@@ -46,7 +45,7 @@ comment
 
 #Configure ssh so that root can ssh as well
 
-#<<comment
+<<comment
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
 if grep -q "^\s*PermitRootLogin yes" /etc/ssh/sshd_config; then
   echo "The line 'PermitRootLogin yes' already exists in /etc/ssh/sshd_config"
@@ -60,27 +59,27 @@ else
   fi
 fi
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #for desktop servers to install xrdp
 sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
