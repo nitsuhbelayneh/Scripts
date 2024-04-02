@@ -1,20 +1,6 @@
 #!/bin/bash
 
 
-
-#sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
-
-#<<comment
-# Add a user to the sudoer group in debian
-sudoers_file="/etc/sudoers"
-if [[ -f "$sudoers_file" ]]; then
-  sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
-  echo "Add the user the sudoers group,"
-else
-  echo "The file does not exist in /etc/sudoers"
-fi
-#comment
-
 ############################################################################################################################################
 
 <<comment
@@ -237,6 +223,19 @@ sudo apt autoremove --purge xfce*
 
 
 
+comment
+
+############################################################################################################################################
+
+<<comment
+# Add a user to the sudoer group in debian
+sudoers_file="/etc/sudoers"
+if [[ -f "$sudoers_file" ]]; then
+  sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
+  echo "Add the user the sudoers group,"
+else
+  echo "The file does not exist in /etc/sudoers"
+fi
 comment
 
 ############################################################################################################################################
