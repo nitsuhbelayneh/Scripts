@@ -7,12 +7,13 @@
 # Add a user to the sudoer group in debian
 sudoers_file="/etc/sudoers"
 if [[ -f "$sudoers_file" ]]; then
-  echo "ofund it"
+  echo "found it"
 else
   echo "The file does not exist in /etc/sudoers"
 fi
 
 #comment
+
 ############################################################################################################################################
 
 <<comment
