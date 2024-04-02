@@ -11,11 +11,21 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
+# Add a user to the sudoer group in debian
+sudoes_file="etc/sudoers"
+if [[ -f "$sudoes_file" ]]; then
+  #sed -i '/#\s*root	ALL=(ALL:ALL) ALL/a <username>	ALL=(ALL:ALL) ALL' /etc/sudoers
+  sed -i '/#\s*root	ALL=(ALL:ALL) ALL/a clean	ALL=(ALL:ALL) ALL' /etc/sudoers
+  echo "Add the user the sudoers group"
+else
+  echo "The file does not exist in /etc/sudoers"
+fi
+
 #comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 sudo apt install qemu-guest-agent -y
@@ -168,7 +178,7 @@ netplan_config="network:
         via: 
       - to: 
         via: "
-        
+
 # Define the netplan configuration file path
 netplan_file="/etc/netplan/01-network-manager-all.yaml"
 
