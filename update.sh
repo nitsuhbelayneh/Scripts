@@ -3,7 +3,7 @@
 
 #sed -i '/#\s*root\s\+ALL=(ALL:ALL)\s\+ALL/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
 
-<<comment
+#<<comment
 # Add a user to the sudoer group in debian
 sudoers_file="/etc/sudoers"
 if [[ -f "$sudoers_file" ]]; then
@@ -12,7 +12,7 @@ else
   echo "The file does not exist in /etc/sudoers"
 fi
 
-comment
+#comment
 ############################################################################################################################################
 
 <<comment
