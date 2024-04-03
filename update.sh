@@ -267,9 +267,9 @@ sudo apt install code -y
 # Install winbox
 
 sudo apt update
-sudo apt install snapd
-sudo snap install core
-sudo snap install winbox
+sudo apt install snapd -y
+sudo snap install core -y
+sudo snap install winbox -y
 
 # Add the file config part
 
