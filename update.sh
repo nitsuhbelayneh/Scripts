@@ -3,7 +3,7 @@
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Update the package lists
 sudo apt update
@@ -11,11 +11,11 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
-comment
+#comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 sudo apt install qemu-guest-agent -y
@@ -63,14 +63,14 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #for desktop servers to install xrdp
 sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
 
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -231,7 +231,7 @@ comment
 # Add a user to the sudoer group in debian
 sudoers_file="/etc/sudoers"
 if [[ -f "$sudoers_file" ]]; then
-  sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a clean  ALL=(ALL:ALL) ALL' /etc/sudoers
+  sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a <username>  ALL=(ALL:ALL) ALL' /etc/sudoers
   echo "Add the user the sudoers group,"
 else
   echo "The file does not exist in /etc/sudoers"
