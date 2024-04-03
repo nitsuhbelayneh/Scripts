@@ -27,12 +27,12 @@ netplan_config="network:
       addresses:
       - 
       routes:
-      - to: 
+      - to: 0.0.0.0/0
         via: 
       nameservers:
         addresses:
         - 
-        - 
+        - 8.8.8.8
     ens19:
       addresses:
       - 
