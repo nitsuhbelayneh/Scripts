@@ -2,6 +2,9 @@
 
 ############################################################################################################################################
 
+<<comment
+
+# Fix repo problem in debian
 
 sources_file_edit="#deb cdrom:[Debian GNU/Linux 12.1.0 _Bookworm_ - Official amd64 DVD Binary-1 with firmware 20230722-10:49]/ bookworm main non-free-firmware
 
@@ -30,16 +33,18 @@ if [[ -f "$sources_file" ]]; then
     sed -i 's/^/#/' "$sources_file"
     # Add the new configuration after commented lines
     echo "$sources_file_edit" | sudo tee -a "$sources_file" > /dev/null
+    echo "Added the new repo after commenting the existing one"
   else
     # Write the netplan configuration to the file
     echo "$sources_file_edit" | sudo tee "$sources_file" > /dev/null
+    echo "Added new repo to the empty file"
   fi
 else
   # The file does not exists
   echo "The file $sources_file_edit does not exists"
 fi
 
-
+comment
 
 ############################################################################################################################################
 
@@ -65,18 +70,18 @@ sudo systemctl restart qemu-guest-agent
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #install openshh-server
 sudo apt install openssh-server -y
 
-comment
+#comment
 
 ############################################################################################################################################
 
 #Configure ssh so that root can ssh as well
 
-<<comment
+#<<comment
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
 if grep -q "^\s*PermitRootLogin yes" /etc/ssh/sshd_config; then
   echo "The line 'PermitRootLogin yes' already exists in /etc/ssh/sshd_config"
@@ -90,16 +95,16 @@ else
   fi
 fi
 
-comment
+#comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -178,7 +183,7 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Define the netplan configuration template
 
@@ -190,24 +195,24 @@ netplan_config="network:
   ethernets:
     ens18:
       addresses:
-      - 
+      - 196.189.155.238/27
       routes:
-      - to: 
-        via: 
+      - to: 0.0.0.0/0
+        via: 196.189.155.225
       nameservers:
         addresses:
-        - 
+        - 10.3.1.5
         - 8.8.8.8
     ens19:
       addresses:
-      - 
+      - 172.16.148.90/29
       routes:
-      - to: 
-        via: 
-      - to: 
-        via: 
-      - to: 
-        via: "
+      - to: 10.190.10.16/32
+        via: 172.16.148.89
+      - to: 10.204.182.92/32
+        via: 172.16.148.89
+      - to: 10.175.206.40/29
+        via: 172.16.148.89"
 
 # Define the netplan configuration file path
 netplan_file="/etc/netplan/01-network-manager-all.yaml"
@@ -233,7 +238,7 @@ fi
 # Apply the netplan configuration
 sudo netplan apply
 
-comment
+#comment
 
 
 ############################################################################################################################################
@@ -269,6 +274,7 @@ comment
 ############################################################################################################################################
 
 <<comment
+
 # Add a user to the sudoer group in debian
 # Add user name in the place of <username> 
 sudoers_file="/etc/sudoers"
@@ -278,6 +284,7 @@ if [[ -f "$sudoers_file" ]]; then
 else
   echo "The file does not exist in /etc/sudoers"
 fi
+
 comment
 
 ############################################################################################################################################
