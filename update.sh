@@ -81,7 +81,7 @@ sudo apt install openssh-server -y
 
 #Configure ssh so that root can ssh as well
 
-#<<comment
+<<comment
 # Check if "PermitRootLogin yes" exists and is commented in /etc/ssh/sshd_config
 if grep -q "^\s*PermitRootLogin yes" /etc/ssh/sshd_config; then
   echo "The line 'PermitRootLogin yes' already exists in /etc/ssh/sshd_config"
@@ -95,7 +95,7 @@ else
   fi
 fi
 
-#comment
+comment
 
 ############################################################################################################################################
 
@@ -183,7 +183,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Define the netplan configuration template
 
@@ -238,7 +238,7 @@ fi
 # Apply the netplan configuration
 sudo netplan apply
 
-#comment
+comment
 
 
 ############################################################################################################################################
