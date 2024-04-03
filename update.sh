@@ -1,5 +1,45 @@
 #!/bin/bash
 
+############################################################################################################################################
+
+
+sources_file_edit="#deb cdrom:[Debian GNU/Linux 12.1.0 _Bookworm_ - Official amd64 DVD Binary-1 with firmware 20230722-10:49]/ bookworm main non-free-firmware
+
+deb http://deb.debian.org/debian/ bookworm main non-free-firmware
+deb-src http://deb.debian.org/debian/ bookworm main
+
+deb http://deb.debian.org/debian/ bookworm-updates main
+deb-src http://deb.debian.org/debian/ bookworm-updates main
+
+#deb http://security.debian.org/debian-security bookworm/updates main
+#deb-src http://security.debian.org/debian-security bookworm/updates main
+
+deb http://security.debian.org/debian-security bookworm-security main
+deb-src http://security.debian.org/debian-security bookworm-security main
+"
+
+# Define the netplan configuration file path
+sources_file="/etc/apt/sources.list"
+
+# Check if the netplan configuration file already exists
+if [[ -f "$sources_file" ]]; then
+  # Check if there is existing configuration written
+  # Check for any thing that is written in the configuration file
+  if grep -qs '^' "$sources_file"; then  
+    # Comment out the existing configuration
+    sed -i 's/^/#/' "$sources_file"
+    # Add the new configuration after commented lines
+    echo "$sources_file_edit" | sudo tee -a "$sources_file" > /dev/null
+  else
+    # Write the netplan configuration to the file
+    echo "$sources_file_edit" | sudo tee "$sources_file" > /dev/null
+  fi
+else
+  # The file does not exists
+  echo "The file $sources_file_edit does not exists"
+fi
+
+
 
 ############################################################################################################################################
 
@@ -194,6 +234,7 @@ fi
 sudo netplan apply
 
 comment
+
 
 ############################################################################################################################################
 
