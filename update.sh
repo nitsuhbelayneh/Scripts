@@ -195,24 +195,24 @@ netplan_config="network:
   ethernets:
     ens18:
       addresses:
-      - 196.189.155.238/27
+      - 
       routes:
       - to: 0.0.0.0/0
-        via: 196.189.155.225
+        via: 
       nameservers:
         addresses:
-        - 10.3.1.5
+        - 
         - 8.8.8.8
     ens19:
       addresses:
-      - 172.16.148.90/29
+      - 
       routes:
-      - to: 10.190.10.16/32
-        via: 172.16.148.89
-      - to: 10.204.182.92/32
-        via: 172.16.148.89
-      - to: 10.175.206.40/29
-        via: 172.16.148.89"
+      - to: 
+        via: 
+      - to: 
+        via: 
+      - to: 
+        via: "
 
 # Define the netplan configuration file path
 netplan_file="/etc/netplan/01-network-manager-all.yaml"
