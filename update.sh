@@ -229,6 +229,7 @@ comment
 
 <<comment
 # Add a user to the sudoer group in debian
+# Add user name in the place of <username> 
 sudoers_file="/etc/sudoers"
 if [[ -f "$sudoers_file" ]]; then
   sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a <username>  ALL=(ALL:ALL) ALL' /etc/sudoers
