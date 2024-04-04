@@ -451,15 +451,14 @@ history -c
 #TMP_DIR="/tmp"
 
 #Remove the bash history
-#sudo truncate -s 0 .bash_history
-#cat /dev/null > ~/.bash_history
-#history -w
+sudo truncate -s 0 .bash_history
+cat /dev/null > ~/.bash_history
+history -w
 # Clear command history
 #history -c
-echo -n > ~/.bash_history
-echo "Command history cleared."
+#echo -n > ~/.bash_history
+#echo "Command history cleared."
 
-#
 
 # Clear logs
 #sudo truncate -s 0 /var/log/syslog
