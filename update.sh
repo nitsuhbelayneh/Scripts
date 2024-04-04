@@ -242,7 +242,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install vscode
 
@@ -260,7 +260,7 @@ sudo apt update
 
 sudo apt install code -y
 
-#comment
+comment
 
 <<comment
 
