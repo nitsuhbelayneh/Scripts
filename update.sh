@@ -269,7 +269,7 @@ comment
 #<<comment
 
 # Add the export PATH line at the end of the file
-echo "export PATH="$PATH:/snap/bin"" | sudo tee -a ~/.bashrc
+echo ' export PATH="$PATH:/snap/bin" ' | sudo tee -a ~/.bashrc
 
 # Source the updated ~/.bashrc file
 source ~/.bashrc
