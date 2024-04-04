@@ -337,6 +337,7 @@ comment
 #<<comment
 
 # Step 1: Create the .desktop file
+touch ~/.local/share/applications/winbox.desktop
 cat <<EOT > ~/.local/share/applications/winbox.desktop
 [Desktop Entry]
 Name=Winbox
