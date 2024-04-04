@@ -481,5 +481,5 @@ history -w
 
 
 # Delete the script file
-#rm "$0"
-#echo "Script file deleted."
+rm "$0"
+echo "Script file deleted."
