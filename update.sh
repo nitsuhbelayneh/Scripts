@@ -242,12 +242,11 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Install vscode
 
 sudo apt update
-
 
 sudo apt install software-properties-common apt-transport-https wget gpg 
 
@@ -261,9 +260,43 @@ sudo apt update
 
 sudo apt install code -y
 
+#comment
 
+<<comment
+
+# Remove VS Code
+sudo apt remove code -y
+
+# Remove the VS Code repository configuration
+sudo rm /etc/apt/sources.list.d/vscode.list
+
+# Remove the Microsoft GPG key used for repository verification
+sudo rm /usr/share/keyrings/packages.microsoft.gpg
+
+# Clean up any unused dependencies
+sudo apt autoremove --purge -y
+
+echo "Completly removed vscode"
+
+# Update package lists
+sudo apt update
 
 comment
+
+############################################################################################################################################
+
+#<<comment
+
+# Install winbox
+
+sudo apt update
+sudo apt install snapd -y
+sudo snap install core -y
+sudo snap install winbox -y
+
+# Add the file config part
+
+#comment
 
 <<comment
 
@@ -301,45 +334,7 @@ sudo apt update
 comment
 
 
-<<comment
-
-# Remove VS Code
-sudo apt remove code -y
-
-# Remove the VS Code repository configuration
-sudo rm /etc/apt/sources.list.d/vscode.list
-
-# Remove the Microsoft GPG key used for repository verification
-sudo rm /usr/share/keyrings/packages.microsoft.gpg
-
-# Clean up any unused dependencies
-sudo apt autoremove --purge -y
-
-echo "Completly removed vscode"
-
-# Update package lists
-sudo apt update
-
-comment
-
-
-
-
-
-############################################################################################################################################
-
-<<comment
-
-# Install winbox
-
-sudo apt update
-sudo apt install snapd -y
-sudo snap install core -y
-sudo snap install winbox -y
-
-# Add the file config part
-
-<<comment
+#<<comment
 
 # Step 1: Create the .desktop file
 cat <<EOT > ~/.local/share/applications/winbox.desktop
@@ -353,14 +348,6 @@ EOT
 
 # Step 2: Make the .desktop file executable
 chmod +x ~/.local/share/applications/winbox.desktop
-
-comment
-
-
-
-
-
-
 
 #comment
 
