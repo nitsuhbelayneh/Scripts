@@ -328,8 +328,6 @@ comment
 
 #<<comment
 
-#!/bin/bash
-
 lineToAdd='export PATH="$PATH:/snap/bin"'
 bashrcFile=~/.bashrc
 
