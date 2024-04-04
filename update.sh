@@ -457,12 +457,12 @@ echo "Residual packages cleaned up."
 
 #Remove the bash history
 #sudo truncate -s 0 .bash_history
-#cat /dev/null > ~/.bash_history
-#history -w
+cat /dev/null > ~/.bash_history
+history -w
 # Clear command history
-history -c || true
-echo -n > ~/.bash_history || true
-echo "Command history cleared."
+#history -c || true
+#echo -n > ~/.bash_history || true
+#echo "Command history cleared."
 
 
 # Clear logs
