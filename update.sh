@@ -448,7 +448,7 @@ echo -n > ~/.bash_history
 
 sed -i '$ d' ~/.bash_history
 
-history -c
+#history -c
 
 echo "Command history cleared."
 
