@@ -298,14 +298,14 @@ sudo apt update
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install winbox
 
-#sudo apt update
-#sudo apt install snapd -y
-#sudo snap install core -y
-#sudo snap install winbox -y
+sudo apt update
+sudo apt install snapd -y
+sudo snap install core -y
+sudo snap install winbox -y
 
 # Add the file config part
 
