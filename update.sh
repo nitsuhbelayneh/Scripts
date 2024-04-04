@@ -439,7 +439,7 @@ echo "Residual packages cleaned up."
 
 
 #Clear command history 
-#history -c
+history -c
 
 #comment
 
