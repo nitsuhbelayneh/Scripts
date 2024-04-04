@@ -459,6 +459,7 @@ history -c
 echo -n > ~/.bash_history
 echo "Command history cleared."
 
+#
 
 # Clear logs
 #sudo truncate -s 0 /var/log/syslog
