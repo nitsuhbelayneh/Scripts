@@ -298,6 +298,40 @@ sudo snap install winbox
 
 comment
 
+
+
+
+
+
+
+
+
+
+
+
+
+#<<comment
+
+
+#!/bin/bash
+
+lineToAdd='export PATH="$PATH:/snap/bin"'
+bashrcFile=~/.bashrc
+
+# Check if the file exists
+if [[ -f "$bashrcFile" ]]; then
+    # Add the line at the end of the file
+    echo "$lineToAdd" >> "$bashrcFile"
+    echo "The line has been added to $bashrcFile."
+else
+    echo "The file $bashrcFile does not exist."
+fi
+
+
+#comment
+
+
+
 <<comment
 
 
@@ -324,34 +358,6 @@ echo "$lineToAdd" | sudo tee -a ~/.bashrc
 source ~/.bashrc
 
 comment
-
-
-
-<<comment
-
-
-#!/bin/bash
-
-lineToAdd='export PATH="$PATH:/snap/bin"'
-bashrcFile=~/.bashrc
-
-# Check if the file exists
-if [[ -f "$bashrcFile" ]]; then
-    # Add the line at the end of the file
-    echo "$lineToAdd" >> "$bashrcFile"
-    echo "The line has been added to $bashrcFile."
-else
-    echo "The file $bashrcFile does not exist."
-fi
-
-
-
-
-comment
-
-
-
-
 
 <<comment
 
