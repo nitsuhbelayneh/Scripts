@@ -248,7 +248,7 @@ comment
 
 sudo apt update
 
-sudo apt install software-properties-common apt-transport-https wget gpg 
+sudo apt install software-properties-common apt-transport-https wget gpg -y
 
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
 
