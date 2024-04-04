@@ -444,8 +444,6 @@ history -w
 #history -c
 
 
-
-
 echo "Command history cleared."
 
 #comment
@@ -461,7 +459,7 @@ echo "Command history cleared."
 #}
 
 # Variables ( this also should be at the top )
-TMP_DIR="/tmp"
+#TMP_DIR="/tmp"
 
 # Clear logs
 #sudo truncate -s 0 /var/log/syslog
@@ -476,8 +474,8 @@ TMP_DIR="/tmp"
 #sudo rm -rf /tmp/*
 
 # Delete temporary files
-sudo rm -rf "$TMP_DIR"/*
-echo "Temporary files deleted."
+#sudo rm -rf "$TMP_DIR"/*
+#echo "Temporary files deleted."
 
 # Delete the script file
 rm "$0"
