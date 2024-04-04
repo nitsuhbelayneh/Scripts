@@ -446,8 +446,7 @@ echo -n > ~/.bash_history
 
 history -w
 
-#history -c
-
+history -c
 
 echo "Command history cleared."
 
