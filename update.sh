@@ -429,18 +429,65 @@ comment
 #<<comment
 
 # Remove residual packages
+#sudo apt-get clean -y
+#sudo apt autoremove -y
+
+# Remove residual packages
 sudo apt-get clean -y
 sudo apt autoremove -y
+echo "Residual packages cleaned up."
+
 
 #Clear command history 
-history -c
+#history -c
 
 #comment
 
 ############################################################################################################################################
 
+# Error Handling (should be at the top )
+#set -euo pipefail
+
+# Logging Function ( this also should be at the top )
+#log() {
+#    echo "$(date +"%Y-%m-%d %T") - $1" >> /var/log/script.log
+#}
+# Variables ( this also should be at the top )
+#TMP_DIR="/tmp"
+
 #Remove the bash history
-sudo truncate -s 0 .bash_history
+#sudo truncate -s 0 .bash_history
+#cat /dev/null > ~/.bash_history
+#history -w
+# Clear command history
+history -c || true
+echo -n > ~/.bash_history || true
+echo "Command history cleared."
+
+
+# Clear logs
+#sudo truncate -s 0 /var/log/syslog
+#sudo truncate -s 0 /var/log/auth.log
+
+
+# Clear logs
+#sudo truncate -s 0 /var/log/syslog
+#sudo truncate -s 0 /var/log/auth.log
+#echo "Logs cleared."
+
+
+# Delete temporary files
+#sudo rm -rf /tmp/*
+
+
+# Delete temporary files
+#sudo rm -rf "$TMP_DIR"/*
+#log "Temporary files deleted."
+
 
 # Delete the script file
-rm "$0"
+#rm "$0"
+
+# Delete the script file
+rm "$0" || true
+echo "Script file deleted."
