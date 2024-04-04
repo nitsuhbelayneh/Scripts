@@ -273,7 +273,7 @@ sudo apt update
 comment
 
 
-<<comment
+#<<comment
 
 # Remove VS Code
 sudo apt remove code -y
@@ -292,7 +292,7 @@ echo "Completly removed vscode"
 # Update package lists
 sudo apt update
 
-comment
+#comment
 
 
 
