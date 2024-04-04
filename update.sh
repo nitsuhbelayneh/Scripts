@@ -242,11 +242,12 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install vscode
 
 sudo apt update
+
 sudo apt install software-properties-common apt-transport-https wget gpg 
 
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
@@ -257,6 +258,41 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/pack
 sudo apt update
 
 sudo apt install code -y
+
+<<comment
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+sudo apt update
+
+comment
+
+
+#<<comment
+
+# Remove VS Code
+sudo apt remove code -y
+
+# Remove the VS Code repository configuration
+sudo rm /etc/apt/sources.list.d/vscode.list
+
+# Remove the Microsoft GPG key used for repository verification
+sudo rm /usr/share/keyrings/packages.microsoft.gpg
+
+# Clean up any unused dependencies
+sudo apt autoremove --purge -y
+
+echo "Completly removed vscode"
+
+# Update package lists
+sudo apt update
+
+
+
+#comment
+
+
+
 
 #comment
 
