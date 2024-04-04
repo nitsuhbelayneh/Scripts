@@ -2,7 +2,7 @@
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Fix repo problem in debian
 
@@ -44,11 +44,11 @@ else
   echo "The file $sources_file_edit does not exists"
 fi
 
-comment
+#comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Update the package lists
 sudo apt update
@@ -56,7 +56,7 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -110,10 +110,25 @@ comment
 
 <<comment
 
-#for desktop servers to install xrdp
+# Install xrdp for desktop servers
+
 sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+#Remove xrdp
+
+sudo apt-get remove xrdp -y
+sudo apt-get remove --auto-remove xrdp -y
+sudo apt-get purge xrdp -y
+sudo apt-get purge --auto-remove xrdp -y
+sudo apt autoremove -y
 
 comment
 
@@ -378,15 +393,7 @@ comment
 
 <<comment
 
-#Remove xrdp
-
-sudo apt-get remove xrdp -y
-sudo apt-get remove --auto-remove xrdp -y
-sudo apt-get purge xrdp -y
-sudo apt-get purge --auto-remove xrdp -y
-sudo apt autoremove -y
-
-#remove xfc
+# Remove xfc
 
 sudo apt purge xfdesktop4 -y
 sudo apt purge xfce4* 
@@ -398,9 +405,6 @@ sudo apt autoremove
 
 #sudo apt-get purge xfconf xfce4-utils xfwm4 xfce4-session xfdesktop4 exo-utils xfce4-panel xfce4-terminal  thunar
 sudo apt autoremove --purge xfce*
-
-
-
 
 comment
 
