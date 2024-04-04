@@ -265,8 +265,22 @@ sudo apt install code -y
 
 comment
 
+<<comment
 
-#<<comment
+
+# Define the path to the directory containing the script
+bashrc_file=~/.bashrc
+
+# Append the export PATH line at the end of ~/.bashrc
+echo export PATH=\"\$PATH:/snap/bin\" | sudo tee -a "$bashrc_file" > /dev/null
+
+# Source the updated ~/.bashrc file
+source "$bashrc_file"
+
+comment
+
+
+<<comment
 
 # Add the export PATH line at the end of the file
 echo ' export PATH="$PATH:/snap/bin" ' | sudo tee -a ~/.bashrc
@@ -274,8 +288,7 @@ echo ' export PATH="$PATH:/snap/bin" ' | sudo tee -a ~/.bashrc
 # Source the updated ~/.bashrc file
 source ~/.bashrc
 
-
-#comment
+comment
 
 
 <<comment
