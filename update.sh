@@ -434,7 +434,19 @@ sudo apt autoremove -y
 echo "Residual packages cleaned up."
 
 #Clear command history 
+history -c
+
+#Remove the bash history
+sudo truncate -s 0 .bash_history
+#cat /dev/null > ~/.bash_history
+#history -w
+# Clear command history
 #history -c
+#echo -n > ~/.bash_history
+#echo "Command history cleared."
+
+
+
 
 #comment
 
@@ -450,15 +462,6 @@ echo "Residual packages cleaned up."
 
 # Variables ( this also should be at the top )
 TMP_DIR="/tmp"
-
-#Remove the bash history
-sudo truncate -s 0 .bash_history
-#cat /dev/null > ~/.bash_history
-history -w
-# Clear command history
-#history -c
-#echo -n > ~/.bash_history
-#echo "Command history cleared."
 
 # Clear logs
 #sudo truncate -s 0 /var/log/syslog
