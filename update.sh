@@ -314,7 +314,7 @@ comment
 
 lineToAdd='export PATH="$PATH:/snap/bin"'
 #bashrcFile=~/.bashrc
-bashrcFile=.bashrc
+bashrcFile=/home/clean/.bashrc
 
 # Check if the file exists
 if [[ -f "$bashrcFile" ]]; then
