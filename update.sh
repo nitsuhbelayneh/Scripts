@@ -447,8 +447,9 @@ echo "Residual packages cleaned up."
 #log() {
 #    echo "$(date +"%Y-%m-%d %T") - $1" >> /var/log/script.log
 #}
+
 # Variables ( this also should be at the top )
-#TMP_DIR="/tmp"
+TMP_DIR="/tmp"
 
 #Remove the bash history
 sudo truncate -s 0 .bash_history
@@ -459,26 +460,21 @@ history -w
 #echo -n > ~/.bash_history
 #echo "Command history cleared."
 
-
 # Clear logs
 #sudo truncate -s 0 /var/log/syslog
 #sudo truncate -s 0 /var/log/auth.log
-
 
 # Clear logs
 #sudo truncate -s 0 /var/log/syslog
 #sudo truncate -s 0 /var/log/auth.log
 #echo "Logs cleared."
 
-
 # Delete temporary files
 #sudo rm -rf /tmp/*
 
-
 # Delete temporary files
-#sudo rm -rf "$TMP_DIR"/*
-#log "Temporary files deleted."
-
+sudo rm -rf "$TMP_DIR"/*
+echo "Temporary files deleted."
 
 # Delete the script file
 rm "$0"
