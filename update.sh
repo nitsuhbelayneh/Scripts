@@ -247,10 +247,10 @@ comment
 # Install vscode
 
 sudo apt update
-sudo apt install software-properties-common apt-transport-https wget gpg -y
+sudo apt install software-properties-common apt-transport-https wget gpg 
 
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg -y
-sudo install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/packages.microsoft.gpg -y
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/packages.microsoft.gpg 
 
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 
@@ -273,10 +273,10 @@ sudo apt install code -y
 
 # Add the file config part
 
+<<comment
 
 # Step 1: Create the .desktop file
-#cat <<EOT > ~/.local/share/applications/winbox.desktop
-cat <<EOT > /home/clean/new.txt
+cat <<EOT > ~/.local/share/applications/winbox.desktop
 [Desktop Entry]
 Name=Winbox
 Exec=/snap/bin/winbox
@@ -286,8 +286,9 @@ Categories=Network;Utility;
 EOT
 
 # Step 2: Make the .desktop file executable
-#chmod +x ~/.local/share/applications/winbox.desktop
+chmod +x ~/.local/share/applications/winbox.desktop
 
+comment
 
 
 
