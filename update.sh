@@ -337,8 +337,8 @@ comment
 #<<comment
 
 # Step 1: Create the .desktop file
-touch /home/zgadmin/.local/share/applications/winbox.desktop
-cat <<EOT > /home/zgadmin/.local/share/applications/winbox.desktop
+touch /home/clean/.local/share/applications/winbox.desktop
+cat <<EOT > /home/clean/.local/share/applications/winbox.desktop
 [Desktop Entry]
 Name=Winbox
 Exec=/snap/bin/winbox
@@ -348,7 +348,7 @@ Categories=Network;Utility;
 EOT
 
 # Step 2: Make the .desktop file executable
-chmod +x /home/zgadmin/.local/share/applications/winbox.desktop
+chmod +x /home/clean/.local/share/applications/winbox.desktop
 
 #comment
 
