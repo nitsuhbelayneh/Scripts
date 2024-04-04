@@ -312,9 +312,6 @@ comment
 
 #<<comment
 
-
-#!/bin/bash
-
 lineToAdd='export PATH="$PATH:/snap/bin"'
 bashrcFile=~/.bashrc
 
@@ -326,7 +323,6 @@ if [[ -f "$bashrcFile" ]]; then
 else
   echo "The file $bashrcFile does not exist."
 fi
-
 
 #comment
 
