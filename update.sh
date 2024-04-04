@@ -290,7 +290,7 @@ comment
 # Install winbox
 
 sudo apt update
-sudo apt install snapd -y
+sudo apt install snapd
 sudo snap install core
 sudo snap install winbox
 
