@@ -313,7 +313,8 @@ comment
 #<<comment
 
 lineToAdd='export PATH="$PATH:/snap/bin"'
-bashrcFile=~/.bashrc
+#bashrcFile=~/.bashrc
+bashrcFile=.bashrc
 
 # Check if the file exists
 if [[ -f "$bashrcFile" ]]; then
