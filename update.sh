@@ -285,7 +285,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install winbox
 
@@ -296,7 +296,7 @@ sudo snap install winbox
 
 # Add the file config part
 
-#comment
+comment
 
 <<comment
 
