@@ -2,7 +2,7 @@
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Fix repo problem in debian
 
@@ -44,11 +44,11 @@ else
   echo "The file $sources_file_edit does not exists"
 fi
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Update the package lists
 sudo apt update
@@ -56,17 +56,17 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 sudo apt install qemu-guest-agent -y
 sudo systemctl restart qemu-guest-agent
 
-#comment
+comment
 
 ############################################################################################################################################
 
@@ -108,14 +108,14 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #for desktop servers to install xrdp
 sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
@@ -242,7 +242,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install vscode
 
@@ -260,7 +260,7 @@ sudo apt update
 
 sudo apt install code -y
 
-#comment
+comment
 
 <<comment
 
