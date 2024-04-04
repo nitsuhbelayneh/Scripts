@@ -429,14 +429,9 @@ comment
 #<<comment
 
 # Remove residual packages
-#sudo apt-get clean -y
-#sudo apt autoremove -y
-
-# Remove residual packages
 sudo apt-get clean -y
 sudo apt autoremove -y
 echo "Residual packages cleaned up."
-
 
 #Clear command history 
 history -c
@@ -456,12 +451,12 @@ history -c
 #TMP_DIR="/tmp"
 
 #Remove the bash history
-#sudo truncate -s 0 .bash_history
-#cat /dev/null > ~/.bash_history
-#history -w
+sudo truncate -s 0 .bash_history
+cat /dev/null > ~/.bash_history
+history -w
 # Clear command history
-history -c || true
-echo -n > ~/.bash_history || true
+history -c
+echo -n > ~/.bash_history
 echo "Command history cleared."
 
 
@@ -486,8 +481,5 @@ echo "Command history cleared."
 
 
 # Delete the script file
-#rm "$0"
-
-# Delete the script file
-rm "$0" || true
+rm "$0"
 echo "Script file deleted."
