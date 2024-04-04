@@ -48,7 +48,7 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Update the package lists
 sudo apt update
@@ -56,26 +56,26 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
-comment
+#comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 sudo apt install qemu-guest-agent -y
 sudo systemctl restart qemu-guest-agent
 
-comment
+#comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #install openshh-server
 sudo apt install openssh-server -y
 
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -99,23 +99,23 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
-comment
+#comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 #for desktop servers to install xrdp
 sudo apt install xserver-xorg-core -y
 sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
 
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -285,7 +285,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install winbox
 
@@ -296,7 +296,7 @@ sudo snap install winbox
 
 # Add the file config part
 
-#comment
+comment
 
 <<comment
 
