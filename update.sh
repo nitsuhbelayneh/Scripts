@@ -242,7 +242,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install vscode
 
@@ -260,6 +260,19 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/pack
 sudo apt update
 
 sudo apt install code -y
+
+
+
+comment
+
+
+#<<comment
+
+# Add the export PATH line at the end of the file
+echo 'export PATH="$PATH:/snap/bin"' | sudo tee -a ~/.bashrc
+
+# Source the updated ~/.bashrc file
+source ~/.bashrc
 
 #comment
 
