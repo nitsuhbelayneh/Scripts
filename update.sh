@@ -435,13 +435,13 @@ echo "Residual packages cleaned up."
 
 #Clear command history 
 history -c
-
+history -w
 #Remove the bash history
 sudo truncate -s 0 .bash_history
 cat /dev/null > ~/.bash_history
-echo -n > ~/.bash_history
-history -w
-history -c
+#echo -n > ~/.bash_history
+
+#history -c
 
 
 
