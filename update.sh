@@ -48,7 +48,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Update the package lists
 sudo apt update
@@ -56,7 +56,7 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
@@ -266,12 +266,34 @@ sudo apt install code -y
 
 # Install winbox
 
-sudo apt update
-sudo apt install snapd -y
-sudo snap install core -y
-sudo snap install winbox -y
+#sudo apt update
+#sudo apt install snapd -y
+#sudo snap install core -y
+#sudo snap install winbox -y
 
 # Add the file config part
+
+
+# Step 1: Create the .desktop file
+#cat <<EOT > ~/.local/share/applications/winbox.desktop
+cat <<EOT > /home/clean/new.txt
+[Desktop Entry]
+Name=Winbox
+Exec=/snap/bin/winbox
+Icon=winbox
+Type=Application
+Categories=Network;Utility;
+EOT
+
+# Step 2: Make the .desktop file executable
+#chmod +x ~/.local/share/applications/winbox.desktop
+
+
+
+
+
+
+
 
 #comment
 
