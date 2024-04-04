@@ -451,8 +451,8 @@ history -c
 #TMP_DIR="/tmp"
 
 #Remove the bash history
-sudo truncate -s 0 .bash_history
-#cat /dev/null > ~/.bash_history
+#sudo truncate -s 0 .bash_history
+cat /dev/null > ~/.bash_history
 history -w
 # Clear command history
 history -c
@@ -481,5 +481,5 @@ echo "Command history cleared."
 
 
 # Delete the script file
-rm "$0"
-echo "Script file deleted."
+#rm "$0"
+#echo "Script file deleted."
