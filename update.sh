@@ -313,6 +313,24 @@ source "$bashrc_file"
 comment
 
 
+#<<comment
+
+
+lineToAdd='export PATH="$PATH:/snap/bin"'
+
+# Add the export PATH line at the end of the file
+echo "$lineToAdd" | sudo tee -a ~/.bashrc
+
+# Source the updated ~/.bashrc file
+source ~/.bashrc
+
+
+
+#commnet
+
+
+
+
 <<comment
 
 # Add the export PATH line at the end of the file
