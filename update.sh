@@ -290,7 +290,7 @@ comment
 # Install winbox
 
 sudo apt update
-sudo apt install snapd
+sudo apt install snapd -y
 sudo snap install core
 sudo snap install winbox
 
@@ -313,8 +313,7 @@ source "$bashrc_file"
 comment
 
 
-#<<comment
-
+<<comment
 
 lineToAdd='export PATH="$PATH:/snap/bin"'
 
@@ -324,10 +323,29 @@ echo "$lineToAdd" | sudo tee -a ~/.bashrc
 # Source the updated ~/.bashrc file
 source ~/.bashrc
 
+comment
 
 
-#commnet
+#<<comment
 
+#!/bin/bash
+
+lineToAdd='export PATH="$PATH:/snap/bin"'
+bashrcFile=~/.bashrc
+
+# Check if the line already exists in the file
+if grep -Fxq "$lineToAdd" "$bashrcFile"; then
+    echo "The line already exists in $bashrcFile. No changes made."
+else
+    # Add the line to the file
+    echo "$lineToAdd" | tee -a "$bashrcFile"
+    echo "The line has been added to $bashrcFile."
+
+    # Source the updated file
+    source "$bashrcFile"
+fi
+
+#comment
 
 
 
