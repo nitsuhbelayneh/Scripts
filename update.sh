@@ -294,23 +294,11 @@ sudo apt install snapd -y
 sudo snap install core
 sudo snap install winbox
 
-# Add the file config part
-
 comment
 
+<<comment
 
-
-
-
-
-
-
-
-
-
-
-
-#<<comment
+# Modify the bashrc file so that winbox can be opened from the command line
 
 lineToAdd='export PATH="$PATH:/snap/bin"'
 #bashrcFile=~/.bashrc
@@ -325,81 +313,11 @@ else
   echo "The file $bashrcFile does not exist."
 fi
 
-#comment
-
-
-
-<<comment
-
-
-# Define the path to the directory containing the script
-bashrc_file=~/.bashrc
-
-# Append the export PATH line at the end of ~/.bashrc
-echo export PATH=\"\$PATH:/snap/bin\" | sudo tee -a "$bashrc_file" > /dev/null
-
-# Source the updated ~/.bashrc file
-source "$bashrc_file"
-
-comment
-
-
-<<comment
-
-lineToAdd='export PATH="$PATH:/snap/bin"'
-
-# Add the export PATH line at the end of the file
-echo "$lineToAdd" | sudo tee -a ~/.bashrc
-
-# Source the updated ~/.bashrc file
-source ~/.bashrc
-
 comment
 
 <<comment
 
-lineToAdd='export PATH="$PATH:/snap/bin"'
-bashrcFile=~/.bashrc
-
-# Check if the line already exists in the file
-if grep -Fxq "$lineToAdd" "$bashrcFile"; then
-    echo "The line already exists in $bashrcFile. No changes made."
-else
-    # Add the line to the file
-    echo "$lineToAdd" | tee -a "$bashrcFile"
-    echo "The line has been added to $bashrcFile."
-
-    # Source the updated file
-    source "$bashrcFile"
-fi
-
-comment
-
-
-
-<<comment
-
-# Add the export PATH line at the end of the file
-echo ' export PATH="$PATH:/snap/bin" ' | sudo tee -a ~/.bashrc
-
-# Source the updated ~/.bashrc file
-source ~/.bashrc
-
-comment
-
-
-<<comment
-
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
-sudo apt update
-
-comment
-
-
-<<comment
-
+# Add the desktop icon 
 # Step 1: Create the .desktop file
 touch ~/.local/share/applications/winbox.desktop
 cat <<EOT > ~/.local/share/applications/winbox.desktop
@@ -413,6 +331,46 @@ EOT
 
 # Step 2: Make the .desktop file executable
 chmod +x ~/.local/share/applications/winbox.desktop
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
 
 comment
 
