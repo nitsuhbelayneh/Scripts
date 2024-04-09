@@ -216,7 +216,7 @@ netplan_config="network:
         via: "
 
 # Define the netplan configuration file path
-touch /etc/netplan/01-network-manager-all.yaml
+#touch /etc/netplan/01-network-manager-all.yaml
 netplan_file="/etc/netplan/01-network-manager-all.yaml"
 # Check if the netplan configuration file already exists
 if [[ -f "$netplan_file" ]]; then
