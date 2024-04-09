@@ -48,7 +48,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Update the package lists
 sudo apt update
@@ -56,26 +56,26 @@ sudo apt update
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #install qemu guest agent and restart it (so the machine better comunicate with proxmox)
 sudo apt install qemu-guest-agent -y
 sudo systemctl restart qemu-guest-agent
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #install openshh-server
 sudo apt install openssh-server -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
@@ -99,12 +99,12 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
-#comment
+comment
 
 ############################################################################################################################################
 
@@ -276,11 +276,11 @@ comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
+$LocalTempDir = $env:TEMP; $ChromeInstaller = "ChromeInstaller.exe"; (new-object    System.Net.WebClient).DownloadFile('http://dl.google.com/chrome/install/375.126/chrome_installer.exe', "$LocalTempDir\$ChromeInstaller"); & "$LocalTempDir\$ChromeInstaller" /silent /install; $Process2Monitor =  "ChromeInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$ChromeInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
 
-
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -300,7 +300,7 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Remove residual packages
 sudo apt-get clean -y
@@ -326,7 +326,7 @@ sed -i '$ d' ~/.bash_history
 
 echo "Command history cleared."
 
-#comment
+comment
 
 ############################################################################################################################################
 
