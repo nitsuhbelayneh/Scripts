@@ -12,6 +12,47 @@ comment
 
 <<comment
 
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+<<comment
+
+
+
+comment
+
+############################################################################################################################################
+
+
+<<comment
+
 # Remove xfc
 
 sudo apt purge xfdesktop4 -y
@@ -135,3 +176,30 @@ sudo apt autoremove -y
 comment
 
 ############################################################################################################################################
+
+# Error Handling (should be at the top )
+#set -euo pipefail
+
+# Logging Function ( this also should be at the top )
+#log() {
+#    echo "$(date +"%Y-%m-%d %T") - $1" >> /var/log/script.log
+#}
+
+# Variables ( this also should be at the top )
+#TMP_DIR="/tmp"
+
+# Clear logs
+#sudo truncate -s 0 /var/log/syslog
+#sudo truncate -s 0 /var/log/auth.log
+
+# Clear logs
+#sudo truncate -s 0 /var/log/syslog
+#sudo truncate -s 0 /var/log/auth.log
+#echo "Logs cleared."
+
+# Delete temporary files
+#sudo rm -rf /tmp/*
+
+# Delete temporary files
+#sudo rm -rf "$TMP_DIR"/*
+#echo "Temporary files deleted."
