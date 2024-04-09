@@ -288,10 +288,10 @@ comment
 # Add a user to the sudoer group in debian
 # Add user name in the place of <username>
 
-username=topg
+username="topg"
 sudoers_file="/etc/sudoers"
 if [[ -f "$sudoers_file" ]]; then
-  sudo sed -i "/^root\s*ALL=(ALL:ALL) ALL$/a '$username'  ALL=(ALL:ALL) ALL" /etc/sudoers
+  sudo sed -i '/^root\s*ALL=(ALL:ALL) ALL$/a '"$username"'  ALL=(ALL:ALL) ALL' /etc/sudoers
   echo "Add the user the sudoers group,"
 else
   echo "The file does not exist in /etc/sudoers"
