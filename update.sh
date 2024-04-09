@@ -2,7 +2,7 @@
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Fix repo problem in debian
 
@@ -44,7 +44,7 @@ else
   echo "The file $sources_file_edit does not exists"
 fi
 
-comment
+#comment
 
 ############################################################################################################################################
 
@@ -284,10 +284,10 @@ comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Add a user to the sudoer group in debian
-# Add user name in the place of <username>
+# Add user name to the variable called username
 
 username="topg"
 sudoers_file="/etc/sudoers"
@@ -298,11 +298,11 @@ else
   echo "The file does not exist in /etc/sudoers"
 fi
 
-#comment
+comment
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Remove residual packages
 sudo apt-get clean -y
@@ -328,7 +328,7 @@ sed -i '$ d' ~/.bash_history
 
 echo "Command history cleared."
 
-comment
+#comment
 
 ############################################################################################################################################
 
