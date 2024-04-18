@@ -9,7 +9,7 @@ sudo apt update
 #sudo apt-get dist-upgrade -y
 sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
 #comment
-.
+
 ############################################################################################################################################
 
 #<<comment
