@@ -40,7 +40,7 @@ sudo systemctl restart ssh
 
 ############################################################################################################################################
 
-<<comment
+#<<comment
 
 # Install xrdp for desktop servers
 
@@ -49,11 +49,12 @@ sudo apt install xorgxrdp -y
 sudo apt install xrdp -y
 
 
+
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
 
-comment
-.
+#comment
+
 ############################################################################################################################################
 
 #<<comment
