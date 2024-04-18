@@ -7,8 +7,7 @@ sudo apt update
 
 # Upgrade installed packages
 sudo apt-get dist-upgrade -y
-#sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
-#sudo env APT_LISTCHANGES_FRONTEND=none apt-get dist-upgrade -y
+
 #comment
 
 ############################################################################################################################################
