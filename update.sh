@@ -22,25 +22,25 @@ sudo systemctl restart qemu-guest-agent
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #install openshh-server
 sudo apt install openssh-server -y
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 #Restart the ssh Service
 sudo systemctl restart ssh 
 
-#comment
+comment
 
 ############################################################################################################################################
 
-#<<comment
+<<comment
 
 # Install xrdp for desktop servers
 
@@ -53,7 +53,7 @@ sudo apt install xrdp -y
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
 
-#comment
+comment
 
 ############################################################################################################################################
 
