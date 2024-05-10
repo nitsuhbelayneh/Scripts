@@ -64,15 +64,15 @@ sudo apt-get clean -y
 sudo apt autoremove -y
 echo "Residual packages cleaned up."
 
-#Clear command history 
-history -c
-history -w
-
 #Remove the bash history
 sudo truncate -s 0 .bash_history
 cat /dev/null > ~/.bash_history
 echo -n > ~/.bash_history
 sed -i '$ d' ~/.bash_history
+
+#Clear command history 
+history -c
+history -w
 
 #history -c
 echo "Command history cleared."
