@@ -54,7 +54,8 @@ comment
 ############################################################################################################################################
 
 #<<comment
-color_profile_file="/etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla"
+#color_profile_file="/etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla"
+touch /new/folder/new.pkla
 color_profile_file="/new/folder/new.pkla"
 color_profile="[Allow Colord all Users]
 Identity=unix-user:*
