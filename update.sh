@@ -2,6 +2,14 @@
 
 #<<comment
 
+sudo apt-get remove xrdp -y
+sudo apt-get remove --auto-remove xrdp -y
+sudo apt-get purge xrdp -y
+sudo apt-get purge --auto-remove xrdp -y
+sudo apt autoremove -y
+
+
+
 # Update the package lists
 sudo apt update
 
