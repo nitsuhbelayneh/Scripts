@@ -46,6 +46,42 @@ sudo apt install xrdp -y
 
 
 
+# Define the target directory and file path
+target_dir="/etc/polkit-1/localauthority/50-local.d"
+target_file="${target_dir}/45-allow-colord.pkla"
+
+# Define the content to be added
+color_profile="[Allow Colord all Users]
+Identity=unix-user:*
+Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile
+ResultAny=no
+ResultInactive=no
+ResultActive=yes"
+
+# Create the directory if it doesn't exist
+if [ ! -d "$target_dir" ]; then
+  sudo mkdir -p "$target_dir"
+  if [ $? -ne 0 ]; then
+    echo "Failed to create directory: $target_dir"
+    exit 1
+  fi
+fi
+
+# Create the file and write the content to it
+if [ ! -f "$target_file" ]; then
+  echo "$color_profile" | sudo tee "$target_file" > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Failed to write to file: $target_file"
+    exit 1
+  else
+    echo "Successfully wrote to file: $target_file"
+  fi
+else
+  echo "File already exists: $target_file"
+fi
+
+
+
 # Restart the rdp service after changing the configuration files
 sudo systemctl restart xrdp
 
